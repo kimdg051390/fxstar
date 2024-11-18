@@ -1,0 +1,72 @@
+{
+  "users": [
+    {
+      "id": "test",
+      "password": "qwer1234!",
+      "name": "김정은",
+      "phone": "01012345678",
+      "email": "bookhan@bookhan.com",
+      "account": "845-3232-12(국민은행/김일성)",
+      "residentNumber": "881010",
+      "partner": "북한",
+      "lastLogin": "2024-11-18T11:45:28.564Z",
+      "lastIp": "::1",
+      "balance": 7849989760000,
+      "win": 0,
+      "inmoney": 0,
+      "outmoney": 0,
+      "total": 0
+    },
+    {
+      "id": "test1",
+      "password": "1234qwer!",
+      "name": "북한",
+      "phone": "01012345678",
+      "email": null,
+      "account": "123456789",
+      "residentNumber": "123456",
+      "partner": null,
+      "lastLogin": "2024-11-14T18:27:00.195Z",
+      "lastIp": "::1",
+      "balance": 0,
+      "win": 0,
+      "inmoney": 0,
+      "outmoney": 0,
+      "total": 0
+    },
+    {
+      "id": "test2",
+      "password": "1234qwer!",
+      "name": "홍길동",
+      "phone": "01012345678",
+      "email": "null",
+      "account": "12654654",
+      "residentNumber": "123456",
+      "partner": "남한",
+      "lastLogin": "2024-11-14T18:47:05.975Z",
+      "lastIp": "::1",
+      "balance": "5000000000",
+      "win": 0,
+      "inmoney": 0,
+      "outmoney": 0,
+      "total": 0
+    },
+    {
+      "id": "asd123",
+      "password": "asd123!1",
+      "name": "홍길동",
+      "phone": "01012345678",
+      "email": null,
+      "account": "6534984561",
+      "residentNumber": "1216546",
+      "partner": "똥",
+      "balance": 0,
+      "win": 0,
+      "inmoney": 0,
+      "outmoney": 0,
+      "total": 0,
+      "lastLogin": null,
+      "lastIp": null
+    }
+  ]
+}

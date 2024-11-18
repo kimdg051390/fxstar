@@ -1,0 +1,103 @@
+.tab-menu {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 15px;
+  background-color: #e6e6e6;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  transition: background-color 0.3s;
+}
+
+.tab-button.active,
+.tab-button:hover {
+  background-color: #ffffff;
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+}
+
+/* 텍스트 콘텐츠 영역 스타일 */
+.tab-content {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.content {
+  display: none; /* 기본적으로 숨김 */
+}
+
+.content.active {
+  display: block; /* 활성화된 탭 콘텐츠만 표시 */
+}
+
+.tab-content h3 {
+  font-size: 24px;
+  color: #007bff;
+}
+
+.tab-content p {
+  font-size: 16px;
+  color: #333;
+}
+
+/* 이미지가 부모 요소의 크기를 넘지 않도록 설정 */
+.content img {
+  max-width: 100%; /* 부모 요소의 너비를 넘지 않도록 */
+  height: auto; /* 이미지의 비율을 유지하면서 높이 조정 */
+  display: block;
+  margin: 20px 0; /* 이미지 상하 여백 추가 (선택사항) */
+}
+
+/* 테이블 스타일 */
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: center;
+}
+
+.stats-table th,
+.stats-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.stats-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.stats-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.stats-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* 주석 스타일 */
+.stats-table + p {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* 출처 스타일 (우측 정렬) */
+.source {
+  text-align: right;
+  margin-top: 5px;
+  color: #666;
+  font-size: 14px;
+}

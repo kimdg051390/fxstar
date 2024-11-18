@@ -1,0 +1,14 @@
+[
+  {
+    "time": "1104회차",
+    "id": "test",
+    "name": "김정은",
+    "game": "GOLD",
+    "tradeType": "매수",
+    "entryPrice": 500000,
+    "currentPrice": 2593.9,
+    "result": "win",
+    "timestamp": "2024-11-18T09:23:15.289Z",
+    "resultPrice": 2594.2
+  }
+]

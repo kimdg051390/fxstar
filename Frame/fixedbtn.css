@@ -1,0 +1,234 @@
+/* 고정 버튼 컨테이너 */
+.fixed-buttons {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+  z-index: 1000;
+}
+
+/* 일반 버튼 기본 스타일 */
+.button {
+  width: 50px;
+  height: 50px;
+  background-color: #5aa3d0;
+  border-radius: 50%; /* 완전한 원형 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: width 0.3s ease, border-radius 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+}
+
+/* 버튼 확장 효과 (TOP 버튼은 제외) */
+.button:hover {
+  width: 150px; /* 마우스를 올렸을 때 확장될 너비 */
+  border-radius: 25px; /* 사각형으로 변경 */
+}
+
+/* 이미지 스타일 */
+.button img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+/* 텍스트 스타일 */
+.button .button-text {
+  opacity: 0;
+  color: #fff;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+/* 마우스를 올렸을 때 텍스트 표시 */
+.button:hover .button-text {
+  opacity: 1;
+  margin-left: 5px;
+}
+
+/* TOP 버튼 스타일 (확장되지 않도록 별도로 설정) */
+.top-button {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 50%; /* TOP 버튼은 항상 완전한 원형 유지 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* 색상만 변화 */
+}
+
+.top-button:hover {
+  background-color: #f1f1f1;
+}
+
+/* 공통 팝업 스타일 */
+.popup {
+  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  padding: 10px; /* 팝업이 화면에 가득 차지 않도록 여백 추가 */
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  max-height: 90vh; /* 팝업 최대 높이 설정 */
+  overflow-y: auto; /* 세로 스크롤 가능하도록 설정 */
+  width: 400px; /* 기본 팝업 폭 */
+}
+
+/* 로그인 팝업 전용 스타일 */
+.popup-content.login {
+  width: 400px; /* 기존 로그인 팝업 폭 유지 */
+  max-width: 90%; /* 작은 화면에서 크기 제한 */
+  background: #f9f9f9;
+}
+
+.popup-content.login h2 {
+  font-size: 1.5rem;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.popup-content.login button {
+  background: #007bff;
+  color: white;
+}
+
+/* 회원가입 팝업 전용 스타일 */
+.popup-content.signup {
+  width: 600px; /* 회원가입 팝업 폭을 더 넓게 설정 */
+  background: #f0f8ff;
+}
+
+.popup-content.signup h2 {
+  color: #007bff;
+}
+
+.popup-content.signup button {
+  background: #007bff;
+  color: white;
+}
+
+/* 공통 스타일 */
+.popup-content button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.popup-content button:hover {
+  opacity: 0.9;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #333;
+}
+
+.close:hover {
+  color: #007bff;
+}
+
+/* 회원가입 팝업 내부 폼 스타일 */
+.popup-content.signup .form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 92%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* 전체 스크롤바 적용 */
+::-webkit-scrollbar {
+  width: 8px; /* 스크롤바 너비 */
+  height: 8px; /* 가로 스크롤바 높이 */
+}
+
+/* 스크롤바 트랙 */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* 트랙 배경색 */
+  border-radius: 10px; /* 둥근 트랙 모서리 */
+}
+
+/* 스크롤바 핸들 */
+::-webkit-scrollbar-thumb {
+  background: #888; /* 핸들 색상 */
+  border-radius: 10px; /* 둥근 핸들 모서리 */
+}
+
+/* 스크롤바 핸들에 호버 효과 */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* 호버 시 색상 */
+}
+
+/* 팝업 내 스크롤만 스타일링 */
+.popup-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.popup-content::-webkit-scrollbar-track {
+  background: #eaeaea;
+  border-radius: 10px;
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 10px;
+}
+
+.popup-content::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}

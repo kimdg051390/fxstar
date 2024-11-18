@@ -1,0 +1,144 @@
+/* 전체 컨테이너 */
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 40px auto; /* 위아래 마진 추가 */
+  padding: 20px;
+  background: white; /* 배경색 추가 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+}
+
+/* 차트 영역 */
+#chartContainer {
+  max-width: 1000px;
+  flex-grow: 1;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 차트 높이 설정 */
+#chartDiv {
+  width: 100%;
+  height: 400px;
+}
+
+/* 컨트롤 영역 */
+#controlPanel {
+  max-width: 200px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* p 태그 간 기본 스타일 */
+.trade-info p {
+  margin: 0; /* 기본 마진 제거 */
+  padding: 0; /* 기본 패딩 제거 */
+}
+
+.trade-info {
+  display: flex;
+  justify-content: space-between; /* 양 끝으로 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  font-size: 14px; /* 텍스트 크기 */
+  margin-bottom: 10px; /* 아래 여백 */
+}
+
+/* countdown 강조 (선택 사항) */
+#countdown {
+  color: red;
+  font-weight: bold;
+}
+
+/* 폼 스타일 */
+#tradeForm .form-group {
+  margin-bottom: 20px;
+}
+
+#tradeForm label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+#tradeForm input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* 금액 버튼들 */
+.amount-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.amount-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.amount-btn:hover {
+  background-color: #0056b3;
+}
+
+/* 수익 정보 */
+.profit-info {
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.profit-info p {
+  margin: 5px 0;
+}
+
+/* 매도/매수 버튼 */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trade-btn {
+  width: 48%;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.trade-btn.buy {
+  background-color: #ff4d4d; /* 매수 버튼 (빨간색) */
+}
+
+.trade-btn.buy:hover {
+  background-color: #cc0000;
+}
+
+.trade-btn.sell {
+  background-color: #4d94ff; /* 매도 버튼 (파란색) */
+}
+
+.trade-btn.sell:hover {
+  background-color: #003cb3;
+}

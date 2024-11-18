@@ -1,0 +1,311 @@
+[
+  {
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 410000,
+    "currentPrice": 91499.99,
+    "result": null,
+    "timestamp": "2024-11-18T06:56:10.219Z"
+  },
+  {
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매도",
+    "entryPrice": 5000,
+    "currentPrice": 91732.64,
+    "result": null,
+    "timestamp": "2024-11-18T06:58:22.349Z"
+  },
+  {
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매도",
+    "entryPrice": 5000,
+    "currentPrice": 91721.72,
+    "result": null,
+    "timestamp": "2024-11-18T06:58:28.754Z"
+  },
+  {
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매도",
+    "entryPrice": 500000,
+    "currentPrice": 92000,
+    "result": null,
+    "timestamp": "2024-11-18T06:59:24.191Z"
+  },
+  {
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 5000,
+    "currentPrice": 92196.98,
+    "result": null,
+    "timestamp": "2024-11-18T07:01:05.696Z"
+  },
+  {
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매도",
+    "entryPrice": 100000,
+    "currentPrice": 92157.93,
+    "result": null,
+    "timestamp": "2024-11-18T07:02:06.086Z"
+  },
+  {
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매도",
+    "entryPrice": 10000,
+    "currentPrice": 92099.77,
+    "result": null,
+    "timestamp": "2024-11-18T07:02:24.076Z"
+  },
+  {
+    "time": "971회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 10000,
+    "currentPrice": 91956.48,
+    "result": null,
+    "timestamp": "2024-11-18T07:10:13.277Z"
+  },
+  {
+    "time": "981회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 5000,
+    "currentPrice": 91746.04,
+    "result": null,
+    "timestamp": "2024-11-18T07:20:17.546Z"
+  },
+  {
+    "time": "983회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 100000,
+    "currentPrice": 91668,
+    "result": null,
+    "timestamp": "2024-11-18T07:22:33.236Z"
+  },
+  {
+    "time": "985회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 5000,
+    "currentPrice": 91608.66,
+    "result": null,
+    "timestamp": "2024-11-18T07:24:10.436Z"
+  },
+  {
+    "time": "986회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 5000,
+    "currentPrice": null,
+    "result": null,
+    "timestamp": "2024-11-18T07:25:44.984Z",
+    "resultPrice": 91612.01
+  },
+  {
+    "time": "987회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 10000,
+    "currentPrice": 91574,
+    "result": null,
+    "timestamp": "2024-11-18T07:26:33.017Z",
+    "resultPrice": 91612
+  },
+  {
+    "time": "992회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 5000,
+    "currentPrice": 91489.62,
+    "result": "lose",
+    "timestamp": "2024-11-18T07:31:20.904Z",
+    "resultPrice": 91467.92
+  },
+  {
+    "time": "996회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 5000,
+    "currentPrice": 91564.51,
+    "result": "lose",
+    "timestamp": "2024-11-18T07:35:32.506Z",
+    "resultPrice": 91488
+  },
+  {
+    "time": "1034회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 5000,
+    "currentPrice": 91899,
+    "result": null,
+    "timestamp": "2024-11-18T08:13:05.147Z"
+  },
+  {
+    "time": "1035회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매도",
+    "entryPrice": 10000,
+    "currentPrice": 91904,
+    "result": "lose",
+    "timestamp": "2024-11-18T08:14:06.298Z",
+    "resultPrice": 92028
+  },
+  {
+    "time": "1035회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 5000,
+    "currentPrice": 91920,
+    "result": null,
+    "timestamp": "2024-11-18T08:14:19.090Z"
+  },
+  {
+    "time": "1037회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 5000,
+    "currentPrice": 91935.92,
+    "result": "lose",
+    "timestamp": "2024-11-18T08:16:10.067Z",
+    "resultPrice": 91896.02
+  },
+  {
+    "time": "1038회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 10000,
+    "currentPrice": 91901.94,
+    "result": "win",
+    "timestamp": "2024-11-18T08:17:13.995Z",
+    "resultPrice": 91971.49
+  },
+  {
+    "time": "1041회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 5000,
+    "currentPrice": 91969.7,
+    "result": "lose",
+    "timestamp": "2024-11-18T08:20:41.454Z",
+    "resultPrice": 91944
+  },
+  {
+    "time": "1048회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 500000,
+    "currentPrice": 91900.74,
+    "result": "win",
+    "timestamp": "2024-11-18T08:27:10.626Z",
+    "resultPrice": 91901.44
+  },
+  {
+    "time": "1051회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매도",
+    "entryPrice": 500000,
+    "currentPrice": 91868,
+    "result": "win",
+    "timestamp": "2024-11-18T08:30:24.269Z",
+    "resultPrice": 91840.01
+  },
+  {
+    "time": "1052회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매도",
+    "entryPrice": 50000,
+    "currentPrice": 91825.48,
+    "result": "win",
+    "timestamp": "2024-11-18T08:31:44.276Z",
+    "resultPrice": 91820.01
+  },
+  {
+    "time": "1053회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 500000,
+    "currentPrice": 91769.49,
+    "result": "win",
+    "timestamp": "2024-11-18T08:32:44.837Z",
+    "resultPrice": 91784
+  },
+  {
+    "time": "1055회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 10000,
+    "currentPrice": 91699.99,
+    "result": null,
+    "timestamp": "2024-11-18T08:34:48.710Z"
+  },
+  {
+    "time": "1056회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 100000,
+    "currentPrice": 91717.41,
+    "result": "win",
+    "timestamp": "2024-11-18T08:35:03.871Z",
+    "resultPrice": 91749.51
+  },
+  {
+    "time": "1058회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 500000,
+    "currentPrice": 91682.5,
+    "result": "win",
+    "timestamp": "2024-11-18T08:37:24.135Z",
+    "resultPrice": 91767.61
+  },
+  {
+    "time": "1060회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매수",
+    "entryPrice": 500000,
+    "currentPrice": 91794.41,
+    "result": "win",
+    "timestamp": "2024-11-18T08:39:40.276Z",
+    "resultPrice": 91820
+  },
+  {
+    "time": "1061회차",
+    "id": "test",
+    "name": "김정은",
+    "tradeType": "매도",
+    "entryPrice": 500000,
+    "currentPrice": 91825.47,
+    "result": "win",
+    "timestamp": "2024-11-18T08:40:20.777Z",
+    "resultPrice": 91813.72
+  }
+]

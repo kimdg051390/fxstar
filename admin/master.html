@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FX-STAR Master</title>
+    <link rel="stylesheet" href="admin.css" />
+    <link rel="stylesheet" href="filter.css" />
+    <link rel="stylesheet" href="game.css" />
+  </head>
+  <body>
+    <div class="admin-container">
+      <!-- 좌측 카테고리 메뉴 -->
+      <aside class="sidebar">
+        <h2>FX-STAR Master</h2>
+        <ul class="menu">
+          <li onclick="showSection('dashboard')">대시보드</li>
+          <li onclick="showSection('user-management')">회원 관리</li>
+          <li onclick="showSection('notice-management')">공지사항 관리</li>
+          <li onclick="showSection('ranking-management')">회원 랭킹 관리</li>
+          <li onclick="showSection('account-management')">입출금 신청 관리</li>
+          <li onclick="showSection('partner-management')">지점 관리</li>
+          <li onclick="showSection('game-management')">게임 내역 관리</li>
+          <li onclick="showSection('usergame-management')">회원 내역 관리</li>
+          <li onclick="showSection('event-management')">이벤트 코드 관리</li>
+          <li onclick="showSection('event-management')">고객센터</li>
+          <li onclick="showSection('event-management')">연락처 관리</li>
+        </ul>
+      </aside>
+
+      <!-- 메인 화면 -->
+      <main class="main-content">
+        <section id="dashboard" class="content-section">
+          <h3>대시보드</h3>
+          <p>본사 페이지에 오신 것을 환영합니다!</p>
+        </section>
+
+        <section id="user-management" class="content-section">
+          <h3>회원 관리</h3>
+          <div class="table-container">
+            <table id="user-table">
+              <thead>
+                <tr>
+                  <th>아이디</th>
+                  <th>비밀번호</th>
+                  <th>이름</th>
+                  <th>전화번호</th>
+                  <th>이메일</th>
+                  <th>계좌번호</th>
+                  <th>주민번호</th>
+                  <th>지점</th>
+                  <th>잔고</th>
+                  <th>수익</th>
+                  <th>입금</th>
+                  <th>출금</th>
+                  <th>총거래금액</th>
+                  <th>마지막 로그인</th>
+                  <th>마지막 접속 IP</th>
+                  <th>수정</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="notice-management" class="content-section">
+          <h3>공지사항 관리</h3>
+          <button onclick="openNoticePopup()">새로 만들기</button>
+          <table id="notice-table">
+            <thead>
+              <tr>
+                <th>순번</th>
+                <th>제목</th>
+                <th>내용</th>
+                <th>게시일자</th>
+                <th>수정</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 공지사항 데이터가 여기에 추가됩니다 -->
+            </tbody>
+          </table>
+        </section>
+
+        <!-- 공지사항 팝업 -->
+        <div id="notice-popup" class="popup" style="display: none">
+          <div class="popup-content">
+            <h3 id="popup-title">공지사항 작성</h3>
+            <form id="notice-form">
+              <div class="form-group">
+                <label for="notice-title">제목</label>
+                <input
+                  type="text"
+                  id="notice-title"
+                  placeholder="제목을 입력하세요"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="notice-content">내용</label>
+                <textarea
+                  id="notice-content"
+                  placeholder="내용을 입력하세요"
+                  required
+                ></textarea>
+              </div>
+              <div class="popup-buttons">
+                <button
+                  type="button"
+                  id="popup-complete-btn"
+                  onclick="submitNotice()"
+                >
+                  완료
+                </button>
+                <button type="button" onclick="closeNoticePopup()">취소</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <section id="ranking-management" class="content-section">
+          <h3>회원 랭킹 관리</h3>
+          <button onclick="addRank()">새 랭킹 추가</button>
+          <table id="rank-table">
+            <thead>
+              <tr>
+                <th>등수</th>
+                <th>이름</th>
+                <th>수익금</th>
+                <th>게임 종류</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section id="account-management" class="content-section">
+          <h3>입출금 신청 관리</h3>
+          <div id="filter-section" class="filter-container">
+            <div class="filter-box">
+              <!-- 입출금/계좌문의 필터 -->
+              <div class="filter-group">
+                <label class="filter-title">유형:</label>
+                <label class="filter-option">
+                  <input
+                    type="checkbox"
+                    class="transaction-type-filter"
+                    value="deposit"
+                  />
+                  입금
+                </label>
+                <label class="filter-option">
+                  <input
+                    type="checkbox"
+                    class="transaction-type-filter"
+                    value="withdrawal"
+                  />
+                  출금
+                </label>
+                <label class="filter-option">
+                  <input
+                    type="checkbox"
+                    class="transaction-type-filter"
+                    value="question"
+                  />
+                  계좌문의
+                </label>
+              </div>
+
+              <!-- 처리 상태 필터 -->
+              <div class="filter-group">
+                <label class="filter-title">처리 상태:</label>
+                <label class="filter-option">
+                  <input
+                    type="checkbox"
+                    class="status-filter"
+                    value="waiting"
+                  />
+                  답변 대기
+                </label>
+                <label class="filter-option">
+                  <input
+                    type="checkbox"
+                    class="status-filter"
+                    value="answered"
+                  />
+                  답변 완료
+                </label>
+              </div>
+
+              <!-- 접수 시간 필터 -->
+              <div class="filter-group">
+                <label class="filter-title">접수시간:</label>
+                <select id="time-range-filter" class="time-range-select">
+                  <option value="all" selected>전체</option>
+                  <option value="1d">최근 1일</option>
+                  <option value="1w">최근 1주일</option>
+                  <option value="1m">최근 1개월</option>
+                  <option value="custom">직접 입력</option>
+                </select>
+                <!-- 직접 입력 기간 -->
+                <div id="custom-time-inputs" style="display: none">
+                  <label>시작:</label>
+                  <input type="date" id="start-date" />
+                  <label>종료:</label>
+                  <input type="date" id="end-date" />
+                </div>
+              </div>
+
+              <!-- 이름 검색 -->
+              <div class="filter-group">
+                <label class="filter-title">검색:</label>
+                <input
+                  type="text"
+                  id="name-search"
+                  placeholder="이름 입력"
+                  class="search-input"
+                />
+              </div>
+
+              <!-- 검색 버튼 -->
+              <div class="filter-group">
+                <button id="filter-search-btn" class="search-button">
+                  검색
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <table id="account-table" style="margin-top: 0">
+            <thead>
+              <tr>
+                <th>순번</th>
+                <th>입금/출금</th>
+                <th>처리상태</th>
+                <th>접수시간</th>
+                <th>이름</th>
+                <th>금액</th>
+                <th>계좌번호</th>
+                <th>답변하기</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <!-- 입출금 신청 처리 팝업 -->
+        <div id="account-popup" class="popup" style="display: none">
+          <div class="popup-content">
+            <h3 id="popup-title">답변 작성</h3>
+            <form id="notice-form">
+              <div class="form-group">
+                <label for="account-title">제목</label>
+                <input
+                  type="text"
+                  id="account-title"
+                  placeholder="제목을 입력하세요"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="account-content">내용</label>
+                <textarea
+                  id="account-content"
+                  placeholder="내용을 입력하세요"
+                  required
+                ></textarea>
+              </div>
+              <div class="popup-buttons">
+                <button
+                  type="button"
+                  id="popup-complete-btn"
+                  onclick="submitAnswer()"
+                >
+                  완료
+                </button>
+                <button type="button" onclick="closeAndswerPopup()">
+                  취소
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <section id="partner-management" class="content-section">
+          <h3>지점 관리</h3>
+          <button onclick="addRank()">새 지점 추가</button>
+          <table id="rank-table">
+            <thead>
+              <tr>
+                <th>이름</th>
+                <th>대표자</th>
+                <th>전화번호</th>
+                <th>지점코드</th>
+                <th>수정</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section id="game-management" class="content-section">
+          <h3>게임 내역 관리</h3>
+          <div class="data-selector">
+            <button onclick="loadData('btc')">BTC/USD</button>
+            <button onclick="loadData('gold')">GOLD</button>
+            <button onclick="loadData('naq')">NASDAQ</button>
+          </div>
+          <!-- 스크롤 가능한 테이블 컨테이너 -->
+          <div class="table-container">
+            <table id="game-table" style="margin-top: 0">
+              <thead>
+                <tr>
+                  <th>회차</th>
+                  <th>시가</th>
+                  <th>고가</th>
+                  <th>저가</th>
+                  <th>종가</th>
+                  <th>결과</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+        <section id="usergame-management" class="content-section">
+          <h3>회원 내역 관리</h3>
+          <div class="data-selector">
+            <button onclick="loadData('btc')">BTC/USD</button>
+            <button onclick="loadData('gold')">GOLD</button>
+            <button onclick="loadData('naq')">NASDAQ</button>
+          </div>
+          <!-- 스크롤 가능한 테이블 컨테이너 -->
+          <div class="table-container">
+            <table id="game-table" style="margin-top: 0">
+              <thead>
+                <tr>
+                  <th>회차</th>
+                  <th>시가</th>
+                  <th>고가</th>
+                  <th>저가</th>
+                  <th>종가</th>
+                  <th>결과</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="event-management" class="content-section">
+          <h3>이벤트 코드 관리</h3>
+          <button onclick="addRank()">새 코드 추가</button>
+          <table id="rank-table">
+            <thead>
+              <tr>
+                <th>코드명</th>
+                <th>지점</th>
+                <th>적립금액</th>
+                <th>생성일자</th>
+                <th>만료기한</th>
+                <th>수정</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script src="admin.js"></script>
+    <script src="admin2.js"></script>
+  </body>
+</html>

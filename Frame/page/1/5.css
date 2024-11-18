@@ -1,0 +1,21 @@
+.container div p {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+.notice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.notice-table th,
+.notice-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.notice-table th {
+  background-color: #f4f4f4;
+}

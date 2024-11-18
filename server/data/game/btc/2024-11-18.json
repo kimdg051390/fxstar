@@ -1,0 +1,38 @@
+[
+  {
+    "time": "1063회차",
+    "id": "test",
+    "name": "김정은",
+    "game": "BTC/USD",
+    "tradeType": "매수",
+    "entryPrice": 100000,
+    "currentPrice": 91836.17,
+    "result": "lose",
+    "timestamp": "2024-11-18T08:42:42.557Z",
+    "resultPrice": 91836.17
+  },
+  {
+    "time": "1267회차",
+    "id": "test",
+    "name": "김정은",
+    "game": "BTC/USD",
+    "tradeType": "매도",
+    "entryPrice": 3000000,
+    "currentPrice": 90434.03,
+    "result": "win",
+    "timestamp": "2024-11-18T12:06:12.132Z",
+    "resultPrice": 90322.42
+  },
+  {
+    "time": "1276회차",
+    "id": "test",
+    "name": "김정은",
+    "game": "BTC/USD",
+    "tradeType": "매도",
+    "entryPrice": 1000000,
+    "currentPrice": 90296.01,
+    "result": "lose",
+    "timestamp": "2024-11-18T12:15:15.579Z",
+    "resultPrice": 90502.32
+  }
+]

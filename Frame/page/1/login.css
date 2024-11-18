@@ -1,0 +1,110 @@
+/*로그인창*/
+/* 로그인 팝업 전체 화면 설정 */
+#login-popup {
+  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  padding: 10px; /* 팝업이 화면에 가득 차지 않도록 여백 추가 */
+}
+
+/* 로그인 팝업 내용 */
+#login-popup .popup-content {
+  background: #f9f9f9;
+  max-width: 90%; /* 작은 화면에서 크기 제한 */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  max-height: 90vh; /* 팝업 최대 높이 설정 */
+  overflow-y: auto; /* 세로 스크롤 가능하도록 설정 */
+  width: 400px; /* 기본 팝업 폭 */
+}
+
+/* 로그인 팝업 제목 */
+#login-popup .popup-content h2 {
+  font-size: 1.5rem;
+  color: #007bff; /* 파란색 제목 */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* 로그인 팝업 닫기 버튼 */
+#login-popup .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #333;
+  transition: color 0.2s;
+}
+
+#login-popup .close:hover {
+  color: #007bff;
+}
+
+/* 로그인 팝업 내부 폼 */
+#login-popup .form-group {
+  margin-bottom: 15px;
+}
+
+#login-popup .form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+#login-popup .form-group input {
+  width: 92%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* 로그인 팝업 버튼 */
+#login-popup .popup-content button {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#login-popup .popup-content button:hover {
+  background: #0056b3;
+}
+
+/* 로그인 팝업 스크롤 스타일 */
+#login-popup .popup-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+#login-popup .popup-content::-webkit-scrollbar-track {
+  background: #eaeaea;
+  border-radius: 10px;
+}
+
+#login-popup .popup-content::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 10px;
+}
+
+#login-popup .popup-content::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}

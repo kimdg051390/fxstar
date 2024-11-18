@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인 및 회원가입</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header>
+      <h1>JINDOGE</h1>
+      <nav>
+        <ul>
+          <li><a href="#">공지사항</a></li>
+          <li><a href="#">회사소개</a></li>
+
+          <li>
+            <div class="login-button">
+              <a href="#" onclick="showLogin()">로그인</a>
+              <a href="#" onclick="showSignup()">회원가입</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- 로그인 창 -->
+    <div id="login-popup" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup('login-popup')">&times;</span>
+        <h2>로그인</h2>
+        <form>
+          <input type="text" placeholder="아이디" required />
+          <input type="password" placeholder="비밀번호" required />
+          <button type="submit">로그인</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="signup-popup" class="popup">
+      <div class="popup-content signup">
+        <span class="close" onclick="closePopup('signup-popup')">&times;</span>
+        <h2>회원가입</h2>
+        <form>
+          <fieldset>
+            <legend>회원정보입력</legend>
+            <div class="form-group">
+              <label for="signup-id">아이디</label>
+              <input
+                type="text"
+                id="signup-id"
+                placeholder="아이디를 입력하세요"
+                required
+              />
+              <span class="hint">6~10자 영문자 또는 숫자</span>
+            </div>
+            <div class="form-group">
+              <label for="signup-phone">휴대폰번호</label>
+              <input
+                type="tel"
+                id="signup-phone"
+                placeholder="휴대폰번호를 입력하세요"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="signup-password">비밀번호</label>
+              <input
+                type="password"
+                id="signup-password"
+                placeholder="비밀번호를 입력하세요"
+                required
+              />
+              <span class="hint">영문, 특수문자, 숫자를 조합하여 8~20자리</span>
+            </div>
+            <div class="form-group">
+              <label for="signup-confirm-password">비밀번호 확인</label>
+              <input
+                type="password"
+                id="signup-confirm-password"
+                placeholder="비밀번호를 다시 입력하세요"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="signup-name">이름</label>
+              <input
+                type="text"
+                id="signup-name"
+                placeholder="이름을 입력하세요"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="signup-resident-number">주민번호 앞 6자리</label>
+              <input
+                type="text"
+                id="signup-resident-number"
+                placeholder="주민번호 앞 6자리"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="signup-account">계좌번호</label>
+              <input
+                type="text"
+                id="signup-account"
+                placeholder="계좌번호를 입력하세요"
+              />
+            </div>
+            <div class="form-group">
+              <label for="signup-recommendation">추천지점코드</label>
+              <input
+                type="text"
+                id="signup-recommendation"
+                placeholder="추천지점을 입력하세요"
+              />
+              <span class="hint"
+                >지점명을 작성해주세요. 해당 지점이 없으시면 고객센터로
+                전화주세요.</span
+              >
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>회원가입약관</legend>
+            <div class="agreement">
+              <input type="checkbox" id="terms-agree" required />
+              <label for="terms-agree">회원가입 약관에 동의합니다.</label>
+            </div>
+            <textarea readonly>
+          개인 정보 수집 및 이용 동의 내용
+        </textarea
+            >
+          </fieldset>
+
+          <div class="form-buttons">
+            <button type="submit" class="submit-button">회원가입</button>
+            <button
+              type="button"
+              class="cancel-button"
+              onclick="closePopup('signup-popup')"
+            >
+              취소
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

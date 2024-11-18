@@ -1,0 +1,269 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Admin 대시보드 레이아웃 */
+.admin-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+  width: 200px;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar .menu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar .menu li {
+  margin: 10px 0;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.sidebar .menu li:hover {
+  background-color: #34495e;
+}
+
+/* 메인 컨텐츠 스타일 */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #ecf0f1;
+}
+
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+}
+
+/* 테이블 스타일 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table thead {
+  font-size: 14px; /* 헤더 글씨 크기 */
+  font-weight: bold; /* 굵게 설정 */
+}
+
+/* 테이블 본문 글씨 크기 */
+table tbody {
+  font-size: 13px; /* 본문 글씨 크기 */
+}
+
+/* 테이블 셀 안의 input 필드 스타일 */
+table td input {
+  font-size: inherit; /* 부모 요소의 글씨 크기를 상속 */
+  font-family: inherit; /* 부모 요소의 글꼴을 상속 */
+  width: 100%; /* 셀 크기에 맞게 input 너비 설정 */
+  box-sizing: border-box; /* 패딩과 테두리를 포함한 크기 계산 */
+  border: 1px solid #ddd; /* 셀 스타일과 유사한 테두리 */
+  padding: 5px; /* 셀과 유사한 여백 */
+  background-color: transparent; /* 배경색을 테이블과 일치 */
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+table th {
+  background-color: #3498db;
+  color: white;
+}
+
+.table-container {
+  overflow-x: auto; /* 가로 스크롤 허용 */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* 테이블 고정 레이아웃 설정 */
+#user-table {
+  table-layout: fixed;
+  width : 140%;
+}
+
+/* 각 열 비율 설정 */
+#user-table th:nth-child(1) {
+  width: 5%; /* 아이디 */
+}
+#user-table th:nth-child(2) {
+  width: 5%; /* 비밀번호 */
+}
+#user-table th:nth-child(3) {
+  width: 5%; /* 이름 */
+}
+#user-table th:nth-child(4) {
+  width: 7.5%; /* 전화번호 */
+}
+#user-table th:nth-child(5) {
+  width: 10%; /* 이메일 */
+}
+#user-table th:nth-child(6) {
+  width: 10%; /* 계좌번호 */
+}
+#user-table th:nth-child(7) {
+  width: 7.5%; /* 주민번호 */
+}
+#user-table th:nth-child(8) {
+  width: 5%; /* 지점 */
+}
+#user-table th:nth-child(9) {
+  width: 5%; /* 잔고 */
+}
+#user-table th:nth-child(10) {
+  width: 5%; /* 수익 */
+}
+#user-table th:nth-child(11) {
+  width: 5%; /* 입금 */
+}
+#user-table th:nth-child(12) {
+  width: 5%; /* 출금 */
+}
+#user-table th:nth-child(13) {
+  width: 10%; /* 총 금액 */
+}
+#user-table th:nth-child(14) {
+  width: 15%; /* 마지막 로그인 */
+}
+#user-table th:nth-child(15) {
+  width: 10%; /* 마지막 IP */
+}
+#user-table th:nth-child(16) {
+  width: 5%; /* 마지막 IP */
+}
+
+/* 테이블 고정 레이아웃 설정 */
+#notice-table {
+  table-layout: fixed;
+  width: 100%; /* 테이블 전체 너비 */
+}
+
+/* 각 열 비율 설정 */
+#notice-table th:nth-child(1) {
+  width: 3%; /* 순번 */
+}
+#notice-table th:nth-child(2) {
+  width: 15%; /* 제목 */
+}
+#notice-table th:nth-child(3) {
+  width: 70%; /* 내용 */
+}
+#notice-table th:nth-child(4) {
+  width: 7%; /* 게시일자 */
+}
+#notice-table th:nth-child(5) {
+  width: 5%; /* 수정 */
+}
+
+/* 팝업 배경 */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 팝업 내용 */
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px; /* 팝업 최대 크기 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content h3 {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: none;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.popup-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.popup-buttons button:first-child {
+  background-color: #5c85d6;
+  color: white;
+}
+
+.popup-buttons button:first-child:hover {
+  background-color: #4a6fb0;
+}
+
+.popup-buttons button:last-child {
+  background-color: #ccc;
+  color: black;
+}
+
+.popup-buttons button:last-child:hover {
+  background-color: #999;
+}

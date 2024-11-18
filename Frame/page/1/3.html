@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FX-STAR</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="3.css" />
+    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="../../server.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style></style>
+  </head>
+  <body>
+    <header>
+      <h1 style="font-family: 'Lora', serif">
+        <a href="../../index.html"
+          ><img
+            src="../../img/logo.jpg"
+            alt="Logo Icon"
+            class="logo-icon"
+          />FX-STAR</a
+        >
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="./1.html">공지사항</a></li>
+          <li><a href="#">회사소개</a></li>
+
+          <li><a href="./naq.html">NASDAQ</a></li>
+          <li><a href="./btc.html">BTC</a></li>
+          <li><a href="./gold.html">GOLD</a></li>
+
+          <li><a href="./2.html">입출금신청</a></li>
+          <li><a href="./5.html">마이페이지</a></li>
+          <li>
+            <a onclick="showPopup('login-popup')" id="login-button">로그인</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="announcement-component">
+      <div class="overlay">
+        <h2>회사소개</h2>
+        <p>FX-STAR의 서비스 및 시장구조를 확인해보세요.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="tab-menu">
+        <button class="tab-button active" onclick="showTabContent('fx')">
+          FX마진거래
+        </button>
+        <button class="tab-button" onclick="showTabContent('market')">
+          시장 현황 및 규모
+        </button>
+        <button class="tab-button" onclick="showTabContent('structure')">
+          시장구조
+        </button>
+      </div>
+
+      <div class="tab-content">
+        <div id="fx" class="content active">
+          <h3>FX마진거래란?</h3>
+          <p>
+            FX마진거래란 외국통화의 매수 혹은 매도를 통해 차익을 실현하는 거래
+            형태를 말합니다. 전세계 통화의 환율은 시시각각 변하고 있는데, 이러한
+            변화를 이용하여 이익을 창출하는 것이 FX마진거래의 핵심입니다.
+            FX마진거래의 기본 성격은 이종 통화 간 현물환 거래이지만,
+            현물환보다는 계약 단위가 작고 증거금율도 낮으며, 현물이 오고 가지
+            않는 차액결제 방식을 채택하고 있습니다.
+          </p>
+          <p>
+            FX마진거래의 최대 장점은 양방향 수익구조를 가지고 있어 매수 또는
+            매도 포지션 진입이 모두 가능하다는 것입니다. 환율 변동에 따른 차익
+            외에도, 통화 간 금리차로 인해 발생하는 “Swap Point”에 따른 차익,
+            적은 자금으로도 큰 규모의 거래가 가능하다는 점 등이 FX마진거래의
+            특징이라고 할 수 있습니다.
+          </p>
+          <p>
+            달러/엔 (USD/JPY)을 예로 들자면, 달러 당 환율이 100엔일 경우 1달러를
+            100엔과 교환할 수 있습니다. 환율이 달러 당 120엔으로 상승하면 (엔화
+            약세), 보유하고 있는 1달러를 120엔과 교환함으로써 20엔의 차익을 얻을
+            수 있습니다. 이를 환차익이라고 부릅니다.
+          </p>
+          <p>
+            환율시장의 변동은 달러를 엔으로 교환하고자 하는 사람과, 엔을 달러로
+            교환하고자 하는 사람 간의 균형 (수요와 공급)에 의해 결정되므로,
+            인기가 높은 통화의 환율은 오르고, 반대로 인기가 낮은 통화의 환율은
+            내려갑니다.
+          </p>
+        </div>
+        <div id="market" class="content">
+          <h3>시장 현황 및 규모</h3>
+          <p>
+            외환시장은 본래 국제적으로 은행 간 거래가 주를 이루는 제한된
+            시장이었으나, 지금은 각국의 중앙은행, 상업 및 투자은행, 헤지펀드,
+            일반기업, 개인 등 다양한 주체들이 참가하고 있습니다.
+          </p>
+          <p>
+            국내에서는 2005년 선물거래법 시행령 개정을 기하여 개인투자자들에게도
+            FX시장 참여를 허용하였으며, 통신사업의 급속한 발전으로 말미암아
+            온라인 거래가 가능해지면서 개인투자자들은 HTS (Home Trading
+            System)을 통해 24시간 동안 거래를 할 수 있게 되었습니다.
+          </p>
+          <p>
+            외환시장은 전세계에서 규모가 가장 큰 금융시장입니다. 하루
+            평균거래량은 무려 3.2조 달러에 육박하며, 이는 전세계 증권시장의 일일
+            평균거래량의 10배 이상, NYSE (뉴욕증권거래소)의 일일 평균거래량의
+            35배 이상, 남녀노소 막론 전세계 인구가 하루 평균 $500 가까이
+            거래하는 규모입니다. 동 규모 중 현물환 시장이 차지하는 비중은 1/3
+            수준입니다.
+          </p>
+          <img src="../../img/그래프.jpg" />
+          <p>
+            FX시장에서의 주요 시장으로는 런던, 미국, 도쿄가 있으며, 이 중 미국과
+            영국이 전체 거래량의 50% 이상을 차지하고 있습니다. 따라서, 미국과
+            영국 시장이 겹치는 오후 10시부터 익일 오전 2시 (한국시간 기준)까지
+            거래가 가장 활발합니다. 특히, 미국 달러의 경우 전체 외환거래의 80%
+            이상에 관여하고 있으며, 이는 일 2.7조 달러에 상당하는 규모입니다.
+          </p>
+          <table class="stats-table">
+            <thead>
+              <tr>
+                <th colspan="2">지역 별 일일 평균 거래량</th>
+                <th colspan="2">통화 별 일일 평균 거래량</th>
+                <th colspan="2">통화 쌍 별 일일 평균 거래량</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>국가</td>
+                <td>점유율</td>
+                <td>통화</td>
+                <td>점유율</td>
+                <td>통화조합</td>
+                <td>점유율</td>
+              </tr>
+              <tr>
+                <td>영국</td>
+                <td>34.1%</td>
+                <td>USD</td>
+                <td>86.3%</td>
+                <td>EUR/USD</td>
+                <td>27%</td>
+              </tr>
+              <tr>
+                <td>미국</td>
+                <td>16.6%</td>
+                <td>EUR</td>
+                <td>37.0%</td>
+                <td>USD/JPY</td>
+                <td>13%</td>
+              </tr>
+              <tr>
+                <td>스위스</td>
+                <td>6.1%</td>
+                <td>JPY</td>
+                <td>16.5%</td>
+                <td>GBP/USD</td>
+                <td>12%</td>
+              </tr>
+              <tr>
+                <td>일본</td>
+                <td>6.0%</td>
+                <td>GBP</td>
+                <td>15.0%</td>
+                <td>AUD/USD</td>
+                <td>6%</td>
+              </tr>
+              <tr>
+                <td>싱가포르</td>
+                <td>5.8%</td>
+                <td>CHF</td>
+                <td>6.8%</td>
+                <td>AUD/CAD</td>
+                <td>4%</td>
+              </tr>
+              <tr>
+                <td>홍콩</td>
+                <td>4.4%</td>
+                <td>AUD</td>
+                <td>6.7%</td>
+                <td>EUR/JPY</td>
+                <td>2%</td>
+              </tr>
+              <tr>
+                <td>호주</td>
+                <td>4.3%</td>
+                <td>CAD</td>
+                <td>4.2%</td>
+                <td>EUR/GBP</td>
+                <td>2%</td>
+              </tr>
+              <tr>
+                <td>프랑스</td>
+                <td>3.0%</td>
+                <td>SEK</td>
+                <td>2.8%</td>
+                <td>EUR/CHF</td>
+                <td>2%</td>
+              </tr>
+              <tr>
+                <td>독일</td>
+                <td>2.5%</td>
+                <td>HKD</td>
+                <td>2.2%</td>
+                <td>기타</td>
+                <td>27%</td>
+              </tr>
+              <tr>
+                <td>덴마크</td>
+                <td>2.2%</td>
+                <td>NOK</td>
+                <td>2.2%</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>기타</td>
+                <td>15.0%</td>
+                <td>NZD</td>
+                <td>1.9%</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>기타</td>
+                <td>17.8%</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>합계</td>
+                <td>100%</td>
+                <td>합계</td>
+                <td>100%</td>
+                <td>합계</td>
+                <td>100%</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            거래 별 두 종류의 통화가 관여되기 때문에 개별 통화의 백분율 합계는
+            200%임
+          </p>
+          <p class="source">※ 출처: BIS Triennial Survey 2007</p>
+        </div>
+        <div id="structure" class="content">
+          <h3>시장구조</h3>
+          <p>
+            FX마진거래에서 개인 투자자가 국내 증권사 또는 선물사 (Introducing
+            Broker)를 통해 주문을 넣으면, 해당 주문은 해외파생상품시장회원 (FDM:
+            Forex Dealer Member)을 통해 은행으로 넘어가게 되고, 은행은 국제은행
+            간 시장 (Interbank Market)에서 타 은행과 주문을 거래합니다. 즉,
+            FX마진거래의 거래 참여자는 개인 투자자, IB (Introducing Broker), FDM
+            (Forex Dealer Member), 은행 (Interbank)으로 요약될 수 있습니다.
+          </p>
+          <img src="../../img/시장구조.jpg" />
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-top">
+        <div class="footer-content">
+          <div class="footer-info">
+            <h2>FX-STAR INVEST 고객센터 바로가기</h2>
+            <p>언제든 문의주시면 친절하고 자세하게 안내해드리겠습니다.</p>
+          </div>
+          <div class="footer-buttons">
+            <button class="contact-button">전화상담</button>
+            <button class="kakao-button">카카오톡 채팅상담</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 하단 푸터: 기존 정보 유지 -->
+      <div class="footer-bottom">
+        <div class="footer-content">
+          <div>
+            <h3>Operating Hours</h3>
+            <p><strong>[입출금 시간]</strong></p>
+            <p>평일: 08:00~익일 05:00</p>
+            <p>주말: 11:00~익일 05:00</p>
+            <p>(23:30~24:30 은행업무 불가시간)</p>
+            <p><strong>[실시간 상담]</strong></p>
+            <p>365일/24시간 연중무휴</p>
+          </div>
+
+          <div>
+            <h1 style="font-family: 'Lora', serif; font-size: 48px">
+              <i>FX-STAR INVEST</i>
+            </h1>
+          </div>
+        </div>
+        <div class="footer-content">
+          <p>
+            주식회사 FX-STAR INVEST | 사업자등록번호 293-88-01517
+          </p>
+          <p>© 2024 FX-STAR INVEST — ALL RIGHTS RESERVED</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 로그인 팝업 -->
+    <div id="login-popup" class="popup" style="display: none">
+      <div class="popup-content login">
+        <span class="close" onclick="closePopup('login-popup')">&times;</span>
+
+        <h2>로그인</h2>
+        <form>
+          <div class="form-group">
+            <label for="login-username">아이디</label>
+            <input
+              type="text"
+              id="login-username"
+              placeholder="아이디를 입력하세요"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="login-password">비밀번호</label>
+            <input
+              type="password"
+              id="login-password"
+              placeholder="비밀번호를 입력하세요"
+              required
+            />
+          </div>
+          <button type="submit">로그인</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="alert-background" id="alert-background"></div>
+    <div class="alert-popup" id="alert-popup">
+      <h2 id="alert-title"></h2>
+      <p id="alert-message"></p>
+      <button onclick="closeAlert()">확인</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="3.js"></script>
+    <script src="../../script/login.js"></script>
+  </body>
+</html>

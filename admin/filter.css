@@ -1,0 +1,97 @@
+/* 필터 컨테이너 */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px 0;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+/* 필터 그룹 */
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.filter-box {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+.filter-title {
+  font-weight: bold;
+  margin-right: 10px;
+  color: #333;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* 검색 입력 필드 */
+.search-input {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 200px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* 체크박스 스타일 */
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #007bff; /* 체크박스 컬러 */
+  cursor: pointer;
+}
+
+.search-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+.time-range-select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+#custom-time-inputs input {
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+#custom-time-inputs input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

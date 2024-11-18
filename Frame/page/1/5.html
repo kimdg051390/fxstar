@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FX-STAR</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="2.css" />
+    <link rel="stylesheet" href="5.css" />
+    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="../../server.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style></style>
+  </head>
+  <body>
+    <header>
+      <h1 style="font-family: 'Lora', serif">
+        <a href="../../index.html"
+          ><img
+            src="../../img/logo.jpg"
+            alt="Logo Icon"
+            class="logo-icon"
+          />FX-STAR</a
+        >
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="./1.html">공지사항</a></li>
+          <li><a href="./3.html">회사소개</a></li>
+
+          <li><a href="./naq.html">NASDAQ</a></li>
+          <li><a href="./btc.html">BTC</a></li>
+          <li><a href="./gold.html">GOLD</a></li>
+
+          <li><a href="./2.html">입출금신청</a></li>
+          <li><a href="#">마이페이지</a></li>
+          <li>
+            <a onclick="showPopup('login-popup')" id="login-button">로그인</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="announcement-component">
+      <div class="overlay">
+        <h2>마이페이지</h2>
+        <p>회원 정보 및 내역 관리 하기</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>회원정보</h2>
+      <div></div>
+      <!-- Notice List Table -->
+      <table class="notice-table">
+        <thead>
+          <tr>
+            <th>잔고</th>
+            <th>수익</th>
+            <th>입금</th>
+            <th>출금</th>
+            <th>총거래금액</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 더 많은 게시글 추가 가능 -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container">
+      <h2>거래내역</h2>
+
+      <div id="custom-time-inputs">
+        <!-- 종목 선택 -->
+        <label>종목:</label>
+        <select id="type-select">
+          <option value="btc">BTC</option>
+          <option value="naq">NAQ</option>
+          <option value="gold">GOLD</option>
+        </select>
+        <label>시작:</label>
+        <input type="date" id="start-date" />
+        <label>종료:</label>
+        <input type="date" id="end-date" />
+        <button id="filter-button">조회</button>
+      </div>
+
+      <!-- Notice List Table -->
+      <table id="trade-table" class="notice-table">
+        <thead>
+          <tr>
+            <th>회차</th>
+            <th>종목</th>
+            <th>매수량</th>
+            <th>매도량</th>
+            <th>거래금</th>
+            <th>수익금액</th>
+            <th>수수료</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 더 많은 게시글 추가 가능 -->
+        </tbody>
+      </table>
+      <div class="pagination">
+        <button class="prev-button">이전으로</button>
+        <button class="next-button">다음으로</button>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-top">
+        <div class="footer-content">
+          <div class="footer-info">
+            <h2>FX-STAR INVEST 고객센터 바로가기</h2>
+            <p>언제든 문의주시면 친절하고 자세하게 안내해드리겠습니다.</p>
+          </div>
+          <div class="footer-buttons">
+            <button class="contact-button">전화상담</button>
+            <button class="kakao-button">카카오톡 채팅상담</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 하단 푸터: 기존 정보 유지 -->
+      <div class="footer-bottom">
+        <div class="footer-content">
+          <div>
+            <h3>Operating Hours</h3>
+            <p><strong>[입출금 시간]</strong></p>
+            <p>평일: 08:00~익일 05:00</p>
+            <p>주말: 11:00~익일 05:00</p>
+            <p>(23:30~24:30 은행업무 불가시간)</p>
+            <p><strong>[실시간 상담]</strong></p>
+            <p>365일/24시간 연중무휴</p>
+          </div>
+
+          <div>
+            <h1 style="font-family: 'Lora', serif; font-size: 48px">
+              <i>FX-STAR INVEST</i>
+            </h1>
+          </div>
+        </div>
+        <div class="footer-content">
+          <p>주식회사 FX-STAR INVEST | 사업자등록번호 293-88-01517</p>
+          <p>© 2024 FX-STAR INVEST — ALL RIGHTS RESERVED</p>
+        </div>
+      </div>
+    </footer>
+    <!-- 로그인 팝업 -->
+    <div id="login-popup" class="popup" style="display: none">
+      <div class="popup-content login">
+        <span class="close" onclick="closePopup('login-popup')">&times;</span>
+
+        <h2>로그인</h2>
+        <form>
+          <div class="form-group">
+            <label for="login-username">아이디</label>
+            <input
+              type="text"
+              id="login-username"
+              placeholder="아이디를 입력하세요"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="login-password">비밀번호</label>
+            <input
+              type="password"
+              id="login-password"
+              placeholder="비밀번호를 입력하세요"
+              required
+            />
+          </div>
+          <button type="submit">로그인</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="alert-background" id="alert-background"></div>
+    <div class="alert-popup" id="alert-popup">
+      <h2 id="alert-title"></h2>
+      <p id="alert-message"></p>
+      <button onclick="closeAlert()">확인</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="5.js"></script>
+    <script src="../../script/login.js"></script>
+  </body>
+</html>

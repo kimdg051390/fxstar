@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FX-STAR</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="2.css" />
+    <link rel="stylesheet" href="5.css" />
+    <link rel="stylesheet" href="game.css" />
+    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="../../server.css" />
+    <link rel="stylesheet" href="./chart2.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style></style>
+  </head>
+  <body>
+    <header>
+      <h1 style="font-family: 'Lora', serif">
+        <a href="../../index.html"
+          ><img
+            src="../../img/logo.jpg"
+            alt="Logo Icon"
+            class="logo-icon"
+          />FX-STAR</a
+        >
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="./1.html">공지사항</a></li>
+          <li><a href="./3.html">회사소개</a></li>
+
+          <li><a href="#">NASDAQ</a></li>
+          <li><a href="./btc.html">BTC</a></li>
+          <li><a href="./gold.html">GOLD</a></li>
+
+          <li><a href="./2.html">입출금신청</a></li>
+          <li><a href="./5.html">마이페이지</a></li>
+          <li>
+            <a onclick="showPopup('login-popup')" id="login-button">로그인</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="announcement-component">
+      <div class="overlay">
+        <h2>NASDAQ 100</h2>
+        <p>NASDAQ 100 FX-STAR</p>
+      </div>
+    </div>
+
+    <div
+      class="container"
+      style="display: flex; justify-content: center; gap: 20px"
+    >
+      <!-- 차트 영역 -->
+      <div id="chartContainer" style="flex-grow: 1">
+        <div class="chart-header">
+          <h2
+            style="align-items: center; display: flex; /* 세로 가운데 정렬 */"
+          >
+            <img
+              id="BTC-icon"
+              src="../../img/naq.png"
+              alt="Logo Icon"
+              class="logo-icon"
+            />NASDAQ 100
+          </h2>
+          <h3 id="right-text"></h3>
+        </div>
+
+        <div id="chartDiv"></div>
+        <div class="chart-footer">
+          <div class="footer-content">
+            <a href="https://kr.investing.com/indices/nq-100"
+              >인베스팅 닷컴 참고 데이터 사이트로 이동>></a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- 컨트롤 영역 -->
+      <div id="controlPanel" style="width: 100%; position: relative">
+        <!-- 반투명 오버레이 -->
+        <div id="overlay" class="overlay" style="display: none">
+          <p>투자시간이 마감되었습니다</p>
+          <p>다음 투자시간까지 <span id="nextCountdown">00</span>초</p>
+        </div>
+        <div class="trade-info">
+          <p><strong id="roundNumber">313회차</strong></p>
+          <p><strong>베팅 마감:</strong> <span id="countdown">12초</span></p>
+        </div>
+        <div class="progress-bar">
+          <div class="progress" id="progress-bar"></div>
+        </div>
+
+        <form id="tradeForm">
+          <div class="form-group">
+            <label for="entryPrice">잔고: <span id="mymoney"></span>원</label>
+            <label for="entryPrice">투자 금액</label>
+            <input
+              type="number"
+              id="entryPrice"
+              name="entryPrice"
+              placeholder="진입 금액 입력"
+              required
+            />
+          </div>
+
+          <div class="amount-buttons">
+            <button type="button" class="amount-btn" data-amount="5000">
+              +5,000원
+            </button>
+            <button type="button" class="amount-btn" data-amount="10000">
+              +10,000원
+            </button>
+            <button type="button" class="amount-btn" data-amount="50000">
+              +50,000원
+            </button>
+            <button type="button" class="amount-btn" data-amount="100000">
+              +100,000원
+            </button>
+            <button type="button" class="amount-btn" data-amount="200000">
+              +200,000원
+            </button>
+            <button type="button" class="amount-btn" data-amount="500000">
+              +500,000원
+            </button>
+          </div>
+
+          <div class="profit-box">
+            <div class="profit-info">
+              <div class="profit-values">
+                <p class="profit-title"><strong>예상수익</strong></p>
+                <p id="expectedProfit">+188%</p>
+              </div>
+              <p id="profitAmount">+0원</p>
+            </div>
+          </div>
+
+          <div class="action-buttons">
+            <button type="button" class="trade-btn buy" id="buyBtn">
+              매수<br />(진입가 +0.5)
+            </button>
+            <button type="button" class="trade-btn sell" id="sellBtn">
+              매도<br />(진입가 -0.5)
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- 좌측 테이블 -->
+      <div class="table-container">
+        <table id="dataTable">
+          <thead>
+            <tr>
+              <th>시간</th>
+              <th>시가</th>
+              <th>고가</th>
+              <th>저가</th>
+              <th>종가</th>
+              <th>결과</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 데이터가 JS로 채워질 예정 -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 우측 슈 데이터 -->
+      <div class="super-data-container">
+        <div class="super-summary">
+          <span id="buyCount">매수: 0회</span>
+          <span id="sellCount">매도: 0회</span>
+          <span id="switchCount">전환: 0회</span>
+        </div>
+        <div id="superDataGrid" class="super-data-grid">
+          <!-- 슈 데이터가 JS로 채워질 예정 -->
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-top">
+        <div class="footer-content">
+          <div class="footer-info">
+            <h2>FX-STAR INVEST 고객센터 바로가기</h2>
+            <p>언제든 문의주시면 친절하고 자세하게 안내해드리겠습니다.</p>
+          </div>
+          <div class="footer-buttons">
+            <button class="contact-button">전화상담</button>
+            <button class="kakao-button">카카오톡 채팅상담</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 하단 푸터: 기존 정보 유지 -->
+      <div class="footer-bottom">
+        <div class="footer-content">
+          <div>
+            <h3>Operating Hours</h3>
+            <p><strong>[입출금 시간]</strong></p>
+            <p>평일: 08:00~익일 05:00</p>
+            <p>주말: 11:00~익일 05:00</p>
+            <p>(23:30~24:30 은행업무 불가시간)</p>
+            <p><strong>[실시간 상담]</strong></p>
+            <p>365일/24시간 연중무휴</p>
+          </div>
+
+          <div>
+            <h1 style="font-family: 'Lora', serif; font-size: 48px">
+              <i>FX-STAR INVEST</i>
+            </h1>
+          </div>
+        </div>
+        <div class="footer-content">
+          <p>주식회사 FX-STAR INVEST | 사업자등록번호 293-88-01517</p>
+          <p>© 2024 FX-STAR INVEST — ALL RIGHTS RESERVED</p>
+        </div>
+      </div>
+    </footer>
+    <!-- 로그인 팝업 -->
+    <div id="login-popup" class="popup" style="display: none">
+      <div class="popup-content login">
+        <span class="close" onclick="closePopup('login-popup')">&times;</span>
+
+        <h2>로그인</h2>
+        <form>
+          <div class="form-group">
+            <label for="login-username">아이디</label>
+            <input
+              type="text"
+              id="login-username"
+              placeholder="아이디를 입력하세요"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="login-password">비밀번호</label>
+            <input
+              type="password"
+              id="login-password"
+              placeholder="비밀번호를 입력하세요"
+              required
+            />
+          </div>
+          <button type="submit">로그인</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="alert-background" id="alert-background"></div>
+    <div class="alert-popup" id="alert-popup">
+      <h2 id="alert-title"></h2>
+      <p id="alert-message"></p>
+      <button onclick="closeAlert()">확인</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="../../script/login.js"></script>
+    <script src="../../script/naq.js"></script>
+    <script src="./naqgame.js"></script>
+  </body>
+</html>

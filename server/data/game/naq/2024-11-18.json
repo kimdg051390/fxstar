@@ -1,0 +1,14 @@
+[
+  {
+    "time": "1139회차",
+    "id": "test",
+    "name": "김정은",
+    "game" : "NASDAQ",
+    "tradeType": "매도",
+    "entryPrice": 100000,
+    "currentPrice": 20394.13,
+    "result": "lose",
+    "timestamp": "2024-11-18T09:58:47.452Z",
+    "resultPrice": 20394.13
+  }
+]
