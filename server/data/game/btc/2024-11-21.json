@@ -1,0 +1,14 @@
+[
+  {
+    "time": "2회차",
+    "id": "test",
+    "name": "김정은",
+    "game": "BTC/USD",
+    "tradeType": "매수",
+    "entryPrice": 18000000,
+    "currentPrice": 94705.24,
+    "result": "win",
+    "timestamp": "2024-11-21T00:01:11.065+09:00",
+    "resultPrice": 94719.02
+  }
+]

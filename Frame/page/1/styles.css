@@ -4,21 +4,36 @@ body {
   padding: 0;
   background-color: #f4f4f4;
   overflow-y: scroll;
-  padding-top: 80px;
 }
 
 header {
-  position: fixed;
+  position: fixed !important; 
   top: 0;
   left: 0;
-  width: 100%;
+  height : 5vh;
   z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
-  background-color: #ffffff;
+  background-color: rgba(0,0,0,0);
   padding: 20px;
   display: flex; /* 플렉스 박스를 사용하여 좌우 정렬 */
   justify-content: space-between; /* 제목과 메뉴가 좌우로 나뉘어 정렬되도록 설정 */
   align-items: flex-end; /* 세로 가운데 정렬 */
-  border-bottom: 1px solid #eaeaea;
+  transition: background-color 0.3s ease; /* 색상 변경 시 부드럽게 전환 */
+  width: 100vw;
+}
+
+header.scrolled h1 a{
+  color: black; /* 스크롤 조건 충족 시 글씨 색상 */
+}
+header.scrolled nav ul li a {
+  color: #333; /* 스크롤 조건 충족 시 글씨 색상 */
+}
+
+header.scrolled {
+  background-color: white; /* 배경색도 변경 */
+}
+
+header.scrolled #nav_cont {
+  color: black;
 }
 
 header h1 {
@@ -34,6 +49,7 @@ header h1 a {
   color: inherit; /* 부모 요소의 색상 상속 (필요에 따라) */
   display: flex; /* 링크 자체도 플렉스 컨테이너로 설정 */
   align-items: center; /* 이미지와 텍스트를 세로로 가운데 정렬 */
+  color: white;
 }
 nav {
   margin-top: 20px;
@@ -57,40 +73,9 @@ nav ul li {
 nav ul li a {
   text-decoration: none;
   display: block;
-  color: #333;
+  color: white;
   font-weight: bold;
   font-size: 20px; /* 메뉴 글씨 크기를 키움 */
-}
-
-/* 드롭다운 메뉴 스타일 */
-.dropdown-menu {
-  display: none; /* 기본적으로 드롭다운 숨기기 */
-  position: absolute;
-  top: 30px;
-  left: 0;
-  background-color: #fff;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
-  z-index: 1; /* 메뉴가 다른 요소 위에 표시되도록 */
-}
-
-.dropdown-menu li a {
-  padding: 10px 15px;
-  color: #333;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-menu li a:hover {
-  background-color: #007bff;
-  color: #fff;
-}
-
-/* 드롭다운 메뉴가 부모 요소에 마우스를 올렸을 때 표시되도록 수정 */
-.dropdown:hover > .dropdown-menu {
-  display: block;
 }
 
 nav ul li a::after {
@@ -110,6 +95,24 @@ nav ul li a:hover::after {
   transform: scaleX(1); /* 좌에서 우로 밑줄 애니메이션 */
 }
 
+@media (max-width: 768px) {
+  nav {
+    display: none; /* 화면이 작을 때 메뉴 숨기기 */
+  }
+  #nav_cont {
+    order: 1;
+    margin-right: 40px;
+    color:white;
+    font-size:2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #nav_cont {
+    display: none;
+  }
+}
+
 .logo-icon {
   width: 40px;
   height: auto;
@@ -122,7 +125,7 @@ nav ul li a:hover::after {
   background-image: url("../../img/공지사항jpg.jpg"); /* 배경 이미지 경로 */
   background-size: cover;
   background-position: center;
-  height: 200px; /* 컴포넌트 높이 */
+  height: 30vh; /* 컴포넌트 높이 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -172,6 +175,8 @@ footer .footer-content {
   gap: 20px; /* 로고와 텍스트 간의 간격 */
 }
 
+
+
 footer div {
   text-align: left; /* 텍스트를 왼쪽 정렬 */
 }
@@ -180,6 +185,7 @@ footer p {
   margin: 5px 0;
   font-size: 14px;
 }
+
 
 /* 상단 푸터 스타일 */
 .footer-top {
@@ -201,13 +207,25 @@ footer p {
   color: #555;
 }
 
+@media (max-width: 768px)  {
+  .footer-info p {
+    font-size : 1rem;
+  }
+  .footer-info h2 {
+    font-size : 1.3rem;
+  }
+  .footer-top {
+    padding: 5px;
+  }
+}
+
 .footer-buttons {
   display: flex;
   gap: 15px;
+
 }
 
-.contact-button,
-.kakao-button {
+.contact-button{
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 20px;
@@ -227,15 +245,6 @@ footer p {
   color: white;
 }
 
-.kakao-button {
-  color: white;
-  background-color: #007bff;
-}
-
-.kakao-button:hover {
-  background-color: #0056b3;
-}
-
 /* 하단 푸터 스타일 */
 .footer-bottom {
   justify-content: space-between;
@@ -247,7 +256,6 @@ footer p {
 
 .footer-content {
   max-width: 800px;
-  padding: 10px;
 }
 
 .footer-content a {
@@ -270,19 +278,6 @@ footer p {
 .container h2 {
   font-size: 28px;
   margin-bottom: 20px;
-}
-
-.search-box {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.search-box input[type="text"] {
-  flex: 1;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 4px 0 0 4px;
 }
 
 .search-box button {
@@ -321,25 +316,6 @@ footer p {
   color: inherit; /* 부모 요소의 색상 상속 */
 }
 
-.write-button {
-  margin-bottom: 20px;
-  text-align: right; /* 버튼을 오른쪽 정렬 */
-}
-
-.write-button button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.write-button button:hover {
-  background-color: #555;
-}
-
 .pagination {
   display: flex;
   justify-content: space-between;
@@ -360,102 +336,6 @@ footer p {
 .pagination button:hover {
   background-color: #007bff;
   color: white;
-}
-
-/* 전체 컨테이너 */
-.process-container {
-  text-align: center;
-  padding: 40px;
-  max-width: 80%;
-  margin: 0 auto;
-}
-
-.process-container h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.description {
-  font-size: 16px;
-  color: #666;
-  margin-bottom: 30px;
-}
-
-/* 단계 스타일 */
-.steps {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: relative;
-  margin-bottom: 30px;
-}
-
-.step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.circle {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #f1f1f1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 10px;
-  border: gray solid 2px;
-}
-
-.circle.active {
-  background-color: #00aaff;
-  border: #00aaff solid 2px;
-  color: #ffffff;
-}
-
-/* 단계 텍스트 */
-.step p {
-  font-size: 14px;
-  color: #333;
-  margin: 0;
-}
-
-/* 연결 라인 */
-.steps::before {
-  content: "";
-  position: absolute;
-  top: 25px;
-  left: 5%;
-  width: 90%;
-  height: 2px;
-  background-color: #e0e0e0;
-  z-index: -1;
-}
-
-.details {
-  font-size: 14px;
-  color: #007bff;
-  margin-top: 20px;
-  margin-bottom: 30px;
-}
-
-/* 이미지 컨테이너 */
-.image-container {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.image-container img {
-  width: 100%;
-  max-width: 60%; /* 최대 너비 제한 */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* 전체 스크롤바 적용 */
@@ -498,4 +378,25 @@ footer p {
 
 .popup-content::-webkit-scrollbar-thumb:hover {
   background: #888;
+}
+@media (max-width: 768px) {
+
+  footer .footer-top .footer-content {
+    max-width: 70%;
+    margin: 10px auto;
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    align-items: left;
+
+  }
+  #footer-content_bottom {
+    display: none;
+  }
+
+  footer .footer-top .footer-content  {
+    text-align:  left;
+    align-items:left;
+  }
+
 }

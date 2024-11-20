@@ -122,3 +122,37 @@ document.addEventListener("DOMContentLoaded", () => {
   loadNotices();
   checkLoginStatus();
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = document.querySelectorAll(".point-card");
+  let currentIndex = 0;
+
+  function showNextCard() {
+    // 현재 활성화된 카드를 숨김
+    cards[currentIndex].classList.remove("active");
+
+    // 다음 카드로 이동 (마지막 카드면 처음으로 돌아감)
+    currentIndex = (currentIndex + 1) % cards.length;
+
+    // 다음 카드를 활성화
+    cards[currentIndex].classList.add("active");
+  }
+
+  // 처음 카드 활성화
+  cards[currentIndex].classList.add("active");
+
+  // 일정 시간 간격으로 카드 전환 (3초 간격)
+  setInterval(showNextCard, 2000);
+});
+
+document.addEventListener("scroll", function () {
+  const header = document.querySelector("header");
+  const viewportHeight = window.innerHeight;
+
+  if (window.scrollY >= viewportHeight * 0.5) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+

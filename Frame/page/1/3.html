@@ -16,15 +16,12 @@
   </head>
   <body>
     <header>
-      <h1 style="font-family: 'Lora', serif">
+      <h1 style="font-family: 'Lora', serif; font-style: italic;">
         <a href="../../index.html"
-          ><img
-            src="../../img/logo.jpg"
-            alt="Logo Icon"
-            class="logo-icon"
-          />FX-STAR</a
+          >FX-STAR</a
         >
       </h1>
+      <div id = "nav_cont">≡</div>
       <nav>
         <ul>
           <li><a href="./1.html">공지사항</a></li>
@@ -271,12 +268,11 @@
       <div class="footer-top">
         <div class="footer-content">
           <div class="footer-info">
-            <h2>FX-STAR INVEST 고객센터 바로가기</h2>
+            <h2>FX-STAR 고객센터 바로가기</h2>
             <p>언제든 문의주시면 친절하고 자세하게 안내해드리겠습니다.</p>
           </div>
           <div class="footer-buttons">
-            <button class="contact-button">전화상담</button>
-            <button class="kakao-button">카카오톡 채팅상담</button>
+            <button class="contact-button">실시간 채팅상담</button>
           </div>
         </div>
       </div>
@@ -294,20 +290,24 @@
             <p>365일/24시간 연중무휴</p>
           </div>
 
-          <div>
-            <h1 style="font-family: 'Lora', serif; font-size: 48px">
-              <i>FX-STAR INVEST</i>
-            </h1>
-          </div>
         </div>
-        <div class="footer-content">
-          <p>
-            주식회사 FX-STAR INVEST | 사업자등록번호 293-88-01517
-          </p>
-          <p>© 2024 FX-STAR INVEST — ALL RIGHTS RESERVED</p>
+        <div class="footer-content" >
+          <p id = "footer-content_bottom">주식회사 FX-STAR INVEST | 사업자등록번호 293-88-01517</p>
+          <p>© 2024 FX-STAR INVEST</p>
         </div>
       </div>
     </footer>
+
+    <div class="fixed-buttons">
+      <div id="fixed-buttons1" class="button">
+        <span>✉️</span>
+        <span id="button-text1" class="button-text"></span>
+      </div>
+
+      <div class="top-button" onclick="scrollToTop()">
+        <span>TOP</span>
+      </div>
+    </div>
 
     <!-- 로그인 팝업 -->
     <div id="login-popup" class="popup" style="display: none">

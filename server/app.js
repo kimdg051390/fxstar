@@ -418,16 +418,16 @@ function saveUsers(data) {
 }
 
 // 1분마다 Binance 데이터 갱신
-setInterval(fetchBinanceData, 60 * 1000);
-fetchBinanceData(); // 서버 시작 시 초기 데이터 기록
+//setInterval(fetchBinanceData, 60 * 1000);
+//fetchBinanceData(); // 서버 시작 시 초기 데이터 기록
 
 // 1분마다 gold 데이터 갱신
-setInterval(fetchGoldData, 60 * 1000);
-fetchGoldData(); // 서버 시작 시 초기 데이터 기록
+//setInterval(fetchGoldData, 60 * 1000);
+//fetchGoldData(); // 서버 시작 시 초기 데이터 기록
 
 // 1분마다 gold 데이터 갱신
-setInterval(fetchNaqData, 60 * 1000);
-fetchNaqData();
+//setInterval(fetchNaqData, 60 * 1000);
+//fetchNaqData();
 
 // API: BTC 데이터 가져오기
 app.get("/api/btc", (req, res) => {

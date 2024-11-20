@@ -19,15 +19,12 @@
   </head>
   <body>
     <header>
-      <h1 style="font-family: 'Lora', serif">
+      <h1 style="font-family: 'Lora', serif; font-style: italic;">
         <a href="index.html"
-          ><img
-            src="./img/logo.jpg"
-            alt="Logo Icon"
-            class="logo-icon"
-          />FX-STAR</a
+          >FX-STAR</a
         >
       </h1>
+      <div id = "nav_cont">≡</div>
       <nav>
         <ul>
           <li>
@@ -46,18 +43,13 @@
           </li>
         </ul>
       </nav>
-      <div id="namemoney">이름</div>
     </header>
 
     <div class="video-container">
-      <video autoplay loop muted width="100%">
-        <source src="./img/차트동영상.mp4" type="video/mp4" />
-        <!-- 브라우저가 동영상을 지원하지 않는 경우에 표시할 메시지 -->
-        동영상을 재생할 수 없습니다.
-      </video>
+      <img id = "main_img" src="./img/converted_stock_chart.jpg" alt="차트 이미지" style="width: 100%;" />
       <div class="overlay">
         <div class="text-container">
-          <h1>FX-STAR INVEST<br />고수익 프로젝트</h1>
+          <h1>FX-STAR<br />고수익 프로젝트</h1>
           <p>
             여러명의 수석 전문가들이 차별화된 분석을 통해<br />안전한 고수익
             창출을 도와드립니다!
@@ -66,7 +58,7 @@
             회원가입 바로가기
           </button>
         </div>
-        <img src="./img/1.png" alt="Overlay Image" class="overlay-image" />
+        <!--<img src="./img/1.png" alt="Overlay Image" class="overlay-image" />-->
       </div>
     </div>
 
@@ -74,27 +66,27 @@
       <div class="main">
         <!-- 핵심 포인트 섹션 -->
         <div class="core-points">
-          <h3>FX-STAR INVEST의 핵심 포인트</h3>
+          <h3>FX-STAR의 핵심 포인트</h3>
           <div class="points">
-            <div class="point-card">
+            <div class="point-card" id = "point-card1">
               <h4>POINT 01</h4>
               <h5>쉽고 간편한 차트확인</h5>
               <p>쉽고 간편한 차트확인으로 <br />누구나 쉽게 투자 가능!</p>
               <img src="./img/p1.png" alt="차트 아이콘" />
             </div>
-            <div class="point-card">
+            <div class="point-card" id = "point-card2">
               <h4>POINT 02</h4>
               <h5>문제없는 안전거래</h5>
               <p>단단한 보안으로 <br />문제없는 안전거래 가능!</p>
               <img src="./img/p2.png" alt="보안 아이콘" />
             </div>
-            <div class="point-card">
+            <div class="point-card" id = "point-card3">
               <h4>POINT 03</h4>
               <h5>1일 20시간 매매가능</h5>
               <p>07:20 ~ 05:00까지 <br />하루 20시간 매매 가능!</p>
               <img src="./img/p3.png" alt="거래 아이콘" />
             </div>
-            <div class="point-card">
+            <div class="point-card" id = "point-card4">
               <h4>POINT 04</h4>
               <h5>양방향 거래구조</h5>
               <p>양방향 거래구조로 <br />쉽고 간편한 투자 가능!</p>
@@ -106,7 +98,7 @@
     </div>
 
     <div class="container">
-      <div class="main">
+      <div class="main" id = "mainChart">
         <div class="chart-area">
           <div class="chart-header">
             <h2
@@ -126,7 +118,7 @@
           </div>
           <div class="chart-footer">
             <p>
-              FX-STAR INVEST는 외부의 조작을 100% 방지 및 차단하기 위하여,
+              FX-STAR는 외부의 조작을 100% 방지 및 차단하기 위하여,
               <br />전세계에서 가장 거래량이 많은 바이낸스에서 제공하는
               BTC/USDT의 Perpetual Mark Price(시장평균가)를 이용하고 있습니다.
             </p>
@@ -142,7 +134,7 @@
       <div class="sidebar">
         <!-- 수익금 랭킹 섹션 -->
         <div class="ranking-section">
-          <h3>FX-STAR INVEST 수익금 랭킹</h3>
+          <h3>FX-STAR 수익금 랭킹</h3>
           <p>
             ※수익금 랭킹은 한 주간의 수익금을 집계하여 매주 일요일 업데이트
             됩니다.
@@ -152,9 +144,9 @@
               <thead>
                 <tr>
                   <th>순위</th>
-                  <th>성함</th>
+                  <th>이름</th>
                   <th>수익금</th>
-                  <th>분류/프로젝트</th>
+                  <th>종목</th>
                 </tr>
               </thead>
               <tbody id="ranking-tbody">
@@ -214,12 +206,11 @@
       <div class="footer-top">
         <div class="footer-content">
           <div class="footer-info">
-            <h2>FX-STAR INVEST 고객센터 바로가기</h2>
+            <h2>FX-STAR 고객센터 바로가기</h2>
             <p>언제든 문의주시면 친절하고 자세하게 안내해드리겠습니다.</p>
           </div>
           <div class="footer-buttons">
-            <button class="contact-button">전화상담</button>
-            <button class="kakao-button">카카오톡 채팅상담</button>
+            <button class="contact-button">실시간 채팅상담</button>
           </div>
         </div>
       </div>
@@ -237,27 +228,18 @@
             <p>365일/24시간 연중무휴</p>
           </div>
 
-          <div>
-            <h1 style="font-family: 'Lora', serif; font-size: 48px">
-              <i>FX-STAR INVEST</i>
-            </h1>
-          </div>
         </div>
-        <div class="footer-content">
-          <p>주식회사 FX-STAR INVEST | 사업자등록번호 293-88-01517</p>
-          <p>© 2024 FX-STAR INVEST — ALL RIGHTS RESERVED</p>
+        <div class="footer-content" >
+          <p id = "footer-content_bottom">주식회사 FX-STAR INVEST | 사업자등록번호 293-88-01517</p>
+          <p>© 2024 FX-STAR INVEST</p>
         </div>
       </div>
     </footer>
 
     <div class="fixed-buttons">
       <div id="fixed-buttons1" class="button">
-        <span>📞</span>
-        <span id="button-text1" class="button-text"></span>
-      </div>
-      <div id="fixed-buttons2" class="button">
         <span>✉️</span>
-        <span id="button-text2" class="button-text"></span>
+        <span id="button-text1" class="button-text"></span>
       </div>
 
       <div class="top-button" onclick="scrollToTop()">
@@ -383,15 +365,15 @@
               />
             </div>
             <div class="form-group">
-              <label for="signup-recommendation">추천지점코드</label>
+              <label for="signup-recommendation">추천코드</label>
               <input
                 type="text"
                 id="signup-recommendation"
-                placeholder="추천지점을 입력하세요"
+                placeholder="추천코드을 입력하세요"
               />
               <span class="hint"
-                >※ 지점명을 작성해주세요. 해당 지점이 없으시면 고객센터로
-                전화주세요.</span
+                >※ 추천코드를 작성해주세요. 해당 코드이 없으시면 고객센터로
+                연락주세요.</span
               >
             </div>
 
@@ -699,13 +681,10 @@
     <script>
       // 버튼과 텍스트 요소 가져오기
       const button = document.getElementById("fixed-buttons1");
-      const button2 = document.getElementById("fixed-buttons2");
       const hoverText = document.getElementById("button-text1");
-      const hoverText2 = document.getElementById("button-text2");
-
       // hover 이벤트 처리
       button.addEventListener("mouseover", () => {
-        hoverText.textContent = "전화상담";
+        hoverText.textContent = "채팅상담";
         hoverText.style.display = "block"; // 텍스트 표시
       });
 
@@ -714,16 +693,6 @@
         hoverText.style.display = "none"; // 숨김 처리
       });
 
-      // hover 이벤트 처리
-      button2.addEventListener("mouseover", () => {
-        hoverText2.textContent = "문자상담";
-        hoverText2.style.display = "block"; // 텍스트 표시
-      });
-
-      button2.addEventListener("mouseout", () => {
-        hoverText2.textContent = ""; // 텍스트 제거
-        hoverText2.style.display = "none"; // 숨김 처리
-      });
     </script>
   </body>
 </html>

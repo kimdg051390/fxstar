@@ -64,7 +64,7 @@ async function fetchNaqData() {
     // NAQ_FILE.json에 저장
     fs.writeFileSync(NAQ_FILE, JSON.stringify(formattedData, null, 2), "utf8");
   } catch (error) {
-    console.error("gold 데이터 가져오기 오류:", error.message);
+    console.error("naq 데이터 가져오기 오류:", error.message);
   }
 }
 

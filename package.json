@@ -5,6 +5,7 @@
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "express": "^4.21.1",
+    "fxstar-main": "file:",
     "investing-com-api": "^4.4.0",
     "jsonwebtoken": "^9.0.2"
   },
@@ -14,5 +15,12 @@
   "scripts": {
     "start": "node ./server/app.js",
     "dev": "nodemon ./server/app.js"
-  }
+  },
+  "name": "fxstar-main",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
