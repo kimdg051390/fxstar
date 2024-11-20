@@ -1,0 +1,85 @@
+[
+  {
+    "time": "246회차",
+    "id": "test3",
+    "name": "김일성",
+    "game": "NASDAQ",
+    "tradeType": "매수",
+    "entryPrice": 1000000,
+    "currentPrice": 20555.86,
+    "result": "lose",
+    "timestamp": "2024-11-19T04:05:44.646+09:00",
+    "resultPrice": 20555.86
+  },
+  {
+    "time": "248회차",
+    "id": "test3",
+    "name": "김일성",
+    "game": "NASDAQ",
+    "tradeType": "매수",
+    "entryPrice": 100000,
+    "currentPrice": 20546.09,
+    "result": null,
+    "timestamp": "2024-11-19T04:07:21.698+09:00"
+  },
+  {
+    "time": "260회차",
+    "id": "test",
+    "name": "김정은",
+    "game": "NASDAQ",
+    "tradeType": "매수",
+    "entryPrice": 9000000,
+    "currentPrice": 20521.17,
+    "result": "lose",
+    "timestamp": "2024-11-19T04:19:27.115+09:00",
+    "resultPrice": 20521.17
+  },
+  {
+    "time": "267회차",
+    "id": "test",
+    "name": "김정은",
+    "game": "NASDAQ",
+    "tradeType": "매도",
+    "entryPrice": 2500000,
+    "currentPrice": 20501.67,
+    "result": "lose",
+    "timestamp": "2024-11-19T04:26:10.530+09:00",
+    "resultPrice": 20507.13
+  },
+  {
+    "time": "268회차",
+    "id": "test",
+    "name": "김정은",
+    "game": "NASDAQ",
+    "tradeType": "매수",
+    "entryPrice": 85000,
+    "currentPrice": 20507.13,
+    "result": "win",
+    "timestamp": "2024-11-19T04:27:22.267+09:00",
+    "resultPrice": 20513.29
+  },
+  {
+    "time": "269회차",
+    "id": "test",
+    "name": "김정은",
+    "game": "NASDAQ",
+    "tradeType": "매도",
+    "entryPrice": 13000000,
+    "currentPrice": 20513.29,
+    "result": "win",
+    "timestamp": "2024-11-19T04:28:25.293+09:00",
+    "resultPrice": 20509.6
+  },
+  {
+    "time": "802회차",
+    "id": "test",
+    "name": "김정은",
+    "game": "NASDAQ",
+    "tradeType": "매수",
+    "entryPrice": 7000000,
+    "currentPrice": 20539.19,
+    "result": "lose",
+    "timestamp": "2024-11-19T13:21:28.017+09:00",
+    "resultPrice": 20539.19
+  }
+]

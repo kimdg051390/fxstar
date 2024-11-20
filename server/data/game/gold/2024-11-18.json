@@ -10,5 +10,29 @@
     "result": "win",
     "timestamp": "2024-11-18T09:23:15.289Z",
     "resultPrice": 2594.2
+  },
+  {
+    "time": "10회차",
+    "id": "test",
+    "name": "김정은",
+    "game": "GOLD",
+    "tradeType": "매도",
+    "entryPrice": 510000,
+    "currentPrice": 2612.1,
+    "result": "lose",
+    "timestamp": "2024-11-18T15:09:24.191Z",
+    "resultPrice": 2612.1
+  },
+  {
+    "time": "122회차",
+    "id": "test",
+    "name": "김정은",
+    "game": "GOLD",
+    "tradeType": "매수",
+    "entryPrice": 100000,
+    "currentPrice": 2615.3,
+    "result": "lose",
+    "timestamp": "2024-11-19T02:01:23.191+09:00",
+    "resultPrice": 2615.3
   }
 ]

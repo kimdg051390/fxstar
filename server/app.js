@@ -98,7 +98,7 @@ app.post("/api/login", (req, res) => {
   const clientIp = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
 
   // 마지막 로그인 시간 업데이트
-  user.lastLogin = new Date().toISOString();
+  user.lastLogin = getKoreanISOString();
   user.lastIp = clientIp;
   writeUsers(users);
 
@@ -203,7 +203,7 @@ app.post("/api/notices", (req, res) => {
     id: data.notices.length + 1,
     title,
     content,
-    date: new Date().toISOString(),
+    date: getKoreanISOString(),
   };
 
   data.notices.push(newNotice);
@@ -258,7 +258,8 @@ app.post("/api/submit", (req, res) => {
   if (!user || !user.id || !user.name) {
     return res.status(403).json({ message: "유효하지 않은 사용자입니다." });
   }
-
+  // 기존 데이터에 추가
+  const data = readAccounts();
   // 새로운 신청 데이터 생성
   const newTransaction = {
     index: data.accounts.length + 1,
@@ -269,14 +270,12 @@ app.post("/api/submit", (req, res) => {
     bank: transactionType === "withdrawal" ? bank : "", // 입금의 경우 은행 정보 비우기
     accountHolder: transactionType === "withdrawal" ? accountHolder : "",
     accountNumber: transactionType === "withdrawal" ? accountNumber : "",
-    timestamp: new Date().toISOString(), // 신청 시간 추가
+    timestamp: getKoreanISOString(), // 신청 시간 추가
     isAnswered: null, // 답변 여부 (초기값 null)
     answerTitle: null, // 답변 제목 (초기값 null)
     answerContent: null, // 답변 내용 (초기값 null)
   };
 
-  // 기존 데이터에 추가
-  const data = readAccounts();
   data.accounts.push(newTransaction);
   writeAccounts(data);
 
@@ -458,6 +457,42 @@ app.get("/api/naq", (req, res) => {
   }
 });
 
+// 전체 사용자 거래 내역 조회
+app.get("/api/alltrades", (req, res) => {
+  const { startDate, endDate, type } = req.query;
+  const basePath = path.join(__dirname, `./data/game/${type || "btc"}`); // 기본 종목은 BTC
+  let allTrades = [];
+  const start = startDate ? new Date(startDate) : getKoreanISOString();
+  const end = endDate ? new Date(endDate) : getKoreanISOString();
+
+  // 날짜 범위 내 파일 읽기
+  for (
+    let date = new Date(start);
+    date <= end;
+    date.setDate(date.getDate() + 1)
+  ) {
+    const fileName = `${date.toISOString().split("T")[0]}.json`; // YYYY-MM-DD.json
+    const filePath = path.join(basePath, fileName);
+
+    if (fs.existsSync(filePath)) {
+      try {
+        const fileData = JSON.parse(fs.readFileSync(filePath, "utf8"));
+        allTrades = allTrades.concat(fileData); // 파일의 모든 거래 데이터 추가
+      } catch (error) {
+        console.error(`Error reading file ${filePath}:`, error);
+      }
+    }
+  }
+
+  const formattedTrades = allTrades.map((trade) => {
+    const profit =
+      trade.result === "win" ? 1.88 * trade.entryPrice : -trade.entryPrice;
+    return { ...trade, profit };
+  });
+
+  res.json(formattedTrades);
+});
+
 // 특정 사용자 이름과 날짜 범위로 거래 내역 조회
 app.get("/api/trades", (req, res) => {
   const { startDate, endDate, type } = req.query;
@@ -524,7 +559,7 @@ app.post("/api/btc/trade", (req, res) => {
   }
 
   // 오늘 날짜로 파일 경로 생성
-  const today = new Date().toISOString().split("T")[0];
+  const today = getKoreanISOString().split("T")[0];
   const gameFolder = path.join(__dirname, "./data/game/btc");
   const filePath = path.join(gameFolder, `${today}.json`);
 
@@ -544,7 +579,7 @@ app.post("/api/btc/trade", (req, res) => {
     entryPrice,
     currentPrice,
     result: null, // 결과는 나중에 업데이트
-    timestamp: new Date().toISOString(),
+    timestamp: getKoreanISOString(),
   };
   gameData.push(newTrade);
 
@@ -556,6 +591,12 @@ app.post("/api/btc/trade", (req, res) => {
     .json({ message: "거래 기록이 저장되었습니다.", trade: newTrade });
 });
 
+function getKoreanISOString() {
+  const now = new Date();
+  const kstOffset = 9 * 60; // 한국은 UTC+9 (분 단위)
+  const kstDate = new Date(now.getTime() + kstOffset * 60 * 1000);
+  return kstDate.toISOString().replace("Z", "+09:00"); // ISO 형식으로 변환
+}
 // 거래 기록 API
 app.post("/api/gold/trade", (req, res) => {
   const { tradeType, entryPrice, currentPrice, time } = req.body;
@@ -568,7 +609,7 @@ app.post("/api/gold/trade", (req, res) => {
   }
 
   // 오늘 날짜로 파일 경로 생성
-  const today = new Date().toISOString().split("T")[0];
+  const today = getKoreanISOString().split("T")[0];
   const gameFolder = path.join(__dirname, "./data/game/gold");
   const filePath = path.join(gameFolder, `${today}.json`);
 
@@ -588,7 +629,7 @@ app.post("/api/gold/trade", (req, res) => {
     entryPrice,
     currentPrice,
     result: null, // 결과는 나중에 업데이트
-    timestamp: new Date().toISOString(),
+    timestamp: getKoreanISOString(),
   };
   gameData.push(newTrade);
 
@@ -612,7 +653,7 @@ app.post("/api/naq/trade", (req, res) => {
   }
 
   // 오늘 날짜로 파일 경로 생성
-  const today = new Date().toISOString().split("T")[0];
+  const today = getKoreanISOString().split("T")[0];
   const gameFolder = path.join(__dirname, "./data/game/naq");
   const filePath = path.join(gameFolder, `${today}.json`);
 
@@ -632,7 +673,7 @@ app.post("/api/naq/trade", (req, res) => {
     entryPrice,
     currentPrice,
     result: null, // 결과는 나중에 업데이트
-    timestamp: new Date().toISOString(),
+    timestamp: getKoreanISOString(),
   };
   gameData.push(newTrade);
 
@@ -663,7 +704,7 @@ app.put("/api/game/add-result", (req, res) => {
   }
 
   // 오늘 날짜로 파일 경로 생성
-  const today = new Date().toISOString().split("T")[0];
+  const today = getKoreanISOString().split("T")[0];
   const filePath = path.join(gameFolder, `${today}.json`);
 
   // 파일 존재 여부 확인
@@ -720,7 +761,7 @@ app.put("/api/game/add-result-gold", (req, res) => {
   }
 
   // 오늘 날짜로 파일 경로 생성
-  const today = new Date().toISOString().split("T")[0];
+  const today = getKoreanISOString().split("T")[0];
   const filePath = path.join(gameFolder, `${today}.json`);
 
   // 파일 존재 여부 확인
@@ -777,7 +818,7 @@ app.put("/api/game/add-result-naq", (req, res) => {
   }
 
   // 오늘 날짜로 파일 경로 생성
-  const today = new Date().toISOString().split("T")[0];
+  const today = getKoreanISOString().split("T")[0];
   const filePath = path.join(gameFolder, `${today}.json`);
 
   // 파일 존재 여부 확인

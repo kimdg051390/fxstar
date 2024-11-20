@@ -46,10 +46,13 @@ header h1 a {
   display: flex; /* 링크 자체도 플렉스 컨테이너로 설정 */
   align-items: center; /* 이미지와 텍스트를 세로로 가운데 정렬 */
 }
+#namemoney {
+  order: 3;
+  margin-right: 100px;
+}
 nav {
   margin-top: 20px;
   order: 2;
-  margin-right: 200px;
 }
 
 nav ul {

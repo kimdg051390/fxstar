@@ -303,9 +303,9 @@
         <section id="game-management" class="content-section">
           <h3>게임 내역 관리</h3>
           <div class="data-selector">
-            <button onclick="loadData('btc')">BTC/USD</button>
-            <button onclick="loadData('gold')">GOLD</button>
-            <button onclick="loadData('naq')">NASDAQ</button>
+            <button onclick="loadGameData('btc')">BTC/USD</button>
+            <button onclick="loadGameData('gold')">GOLD</button>
+            <button onclick="loadGameData('naq')">NASDAQ</button>
           </div>
           <!-- 스크롤 가능한 테이블 컨테이너 -->
           <div class="table-container">
@@ -327,20 +327,99 @@
         <section id="usergame-management" class="content-section">
           <h3>회원 내역 관리</h3>
           <div class="data-selector">
-            <button onclick="loadData('btc')">BTC/USD</button>
-            <button onclick="loadData('gold')">GOLD</button>
-            <button onclick="loadData('naq')">NASDAQ</button>
+            <button onclick="fetchTrades()">BTC/USD</button>
+            <button onclick="fetchTrades('gold')">GOLD</button>
+            <button onclick="fetchTrades('naq')">NASDAQ</button>
+          </div>
+          <div id="usergame-filter-section" class="filter-container">
+            <div class="filter-box">
+              <!-- 결과 필터 -->
+              <div class="filter-group">
+                <label class="filter-title">결과:</label>
+                <label class="filter-option">
+                  <input
+                    type="checkbox"
+                    class="transaction-type-filter"
+                    value="win"
+                  />
+                  당첨
+                </label>
+                <label class="filter-option">
+                  <input
+                    type="checkbox"
+                    class="transaction-type-filter"
+                    value="lose"
+                  />
+                  낙첨
+                </label>
+              </div>
+
+              <!-- 매수/매도 필터 -->
+              <div class="filter-group">
+                <label class="filter-title">거래 유형:</label>
+                <label class="filter-option">
+                  <input type="checkbox" class="status-filter" value="buy" />
+                  매수
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" class="status-filter" value="sell" />
+                  매도
+                </label>
+              </div>
+
+              <!-- 거래 일자 필터 -->
+              <div class="filter-group">
+                <label class="filter-title">거래 일자:</label>
+                <select
+                  id="usergame-time-range-filter"
+                  class="time-range-select"
+                >
+                  <option value="all" selected>전체</option>
+                  <option value="1d">최근 1일</option>
+                  <option value="1w">최근 1주일</option>
+                  <option value="1m">최근 1개월</option>
+                  <option value="custom">직접 입력</option>
+                </select>
+                <!-- 직접 입력 기간 -->
+                <div id="usergame-custom-time-inputs" style="display: none">
+                  <label>시작:</label>
+                  <input type="date" id="usergame-start-date" />
+                  <label>종료:</label>
+                  <input type="date" id="usergame-end-date" />
+                </div>
+              </div>
+
+              <!-- 이름 검색 -->
+              <div class="filter-group">
+                <label class="filter-title">사용자 이름:</label>
+                <input
+                  type="text"
+                  id="usergame-name-search"
+                  placeholder="이름 입력"
+                  class="search-input"
+                />
+              </div>
+
+              <!-- 검색 버튼 -->
+              <div class="filter-group">
+                <button id="usergame-filter-search-btn" class="search-button">
+                  검색
+                </button>
+              </div>
+            </div>
           </div>
           <!-- 스크롤 가능한 테이블 컨테이너 -->
           <div class="table-container">
-            <table id="game-table" style="margin-top: 0">
+            <table id="usergame-table" style="margin-top: 0">
               <thead>
                 <tr>
+                  <th>이름</th>
                   <th>회차</th>
-                  <th>시가</th>
-                  <th>고가</th>
-                  <th>저가</th>
-                  <th>종가</th>
+                  <th>종목</th>
+                  <th>매수</th>
+                  <th>매도</th>
+                  <th>거래금</th>
+                  <th>수익금액</th>
                   <th>결과</th>
                 </tr>
               </thead>

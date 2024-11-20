@@ -387,6 +387,10 @@ async function resultTrade(resultPrice, time) {
     10
   );
 
+  winlose == "win"
+    ? showAlert("축하합니다!", "+" + formatNumberWithCommas(amount) + "원 당첨")
+    : showAlert("다음기회에...", "낙첨😭");
+
   try {
     const response = await fetch("/api/user-info/balance", {
       method: "PUT",
@@ -411,6 +415,28 @@ async function resultTrade(resultPrice, time) {
     alert("정보 수정 중 오류가 발생했습니다.");
   }
   loadUserInfo();
+}
+
+function showAlert(title, message) {
+  const alertBackground = document.getElementById("alert-background");
+  const alertPopup = document.getElementById("alert-popup");
+
+  // 제목과 메시지 설정
+  document.getElementById("alert-title").textContent = title;
+  document.getElementById("alert-message").textContent = message;
+
+  // 팝업과 배경 보이기
+  alertBackground.style.display = "block";
+  alertPopup.style.display = "block";
+}
+
+function closeAlert() {
+  const alertBackground = document.getElementById("alert-background");
+  const alertPopup = document.getElementById("alert-popup");
+
+  // 팝업과 배경 숨기기
+  alertBackground.style.display = "none";
+  alertPopup.style.display = "none";
 }
 
 async function loadUserInfo() {
@@ -443,12 +469,20 @@ async function loadUserInfo() {
 loadUserInfo();
 
 function formatNumberWithCommas(number) {
-  let [integer, decimal] = number.toString().split("."); // 정수부와 소수부 분리
+  // 음수 처리
+  const isNegative = number < 0;
+  let absoluteNumber = Math.abs(number).toString(); // 절대값으로 처리
+  let [integer, decimal] = absoluteNumber.split("."); // 정수부와 소수부 분리
+
   let formatted = "";
   while (integer.length > 3) {
     formatted = "," + integer.slice(-3) + formatted;
     integer = integer.slice(0, -3);
   }
   formatted = integer + formatted; // 남은 정수 붙이기
-  return decimal ? `${formatted}.${decimal}` : formatted; // 소수부 붙이기
+
+  // 음수 부호를 다시 추가
+  return (
+    (isNegative ? "-" : "") + (decimal ? `${formatted}.${decimal}` : formatted)
+  );
 }

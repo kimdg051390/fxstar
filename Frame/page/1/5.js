@@ -92,10 +92,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function loadTrades() {
   const startDate =
     document.getElementById("start-date").value ||
-    new Date().toISOString().split("T")[0];
+    getKoreanISOString().split("T")[0];
   const endDate =
     document.getElementById("end-date").value ||
-    new Date().toISOString().split("T")[0];
+    getKoreanISOString().split("T")[0];
 
   const type = document.getElementById("type-select").value || "btc"; // 기본 종목: BTC
 
@@ -122,13 +122,25 @@ function renderTable(data) {
   data.forEach((trade) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td>${trade.time}</td>
+      <td style="font-weight: bold;">${trade.time}</td>
       <td>${trade.game}</td>
-      <td>${trade.tradeType === "매수" ? trade.entryPrice : "-"}</td>
-      <td>${trade.tradeType === "매도" ? trade.entryPrice : "-"}</td>
-      <td>${trade.currentPrice.toFixed(2)}</td>
-      <td>${trade.profit.toFixed(2)}</td>
-      <td>${(trade.entryPrice * 0.001).toFixed(2)}</td>
+      <td>${
+        trade.tradeType === "매수"
+          ? formatNumberWithCommas(trade.entryPrice)
+          : "-"
+      }</td>
+      <td>${
+        trade.tradeType === "매도"
+          ? formatNumberWithCommas(trade.entryPrice)
+          : "-"
+      }</td>
+      <td>${formatNumberWithCommas(trade.entryPrice)}</td>
+      <td class="${trade.profit < 0 ? "negative" : "positive"}">
+  ${trade.profit > 0 ? "+" : ""}${formatNumberWithCommas(trade.profit)}
+</td>
+      <td style="font-weight: bold; color: ${
+        trade.profit > 0 ? "green" : "red"
+      };">${trade.profit > 0 ? "당첨" : "낙첨"}</td>
     `;
     tableBody.appendChild(tr);
   });
@@ -139,8 +151,32 @@ document.getElementById("filter-button").addEventListener("click", loadTrades);
 
 // 초기 데이터 로드 (당일)
 document.addEventListener("DOMContentLoaded", () => {
-  const today = new Date().toISOString().split("T")[0];
+  const today = getKoreanISOString().split("T")[0];
   document.getElementById("start-date").value = today;
   document.getElementById("end-date").value = today;
   loadTrades();
 });
+function getKoreanISOString() {
+  const now = new Date();
+  const kstOffset = 9 * 60; // 한국은 UTC+9 (분 단위)
+  const kstDate = new Date(now.getTime() + kstOffset * 60 * 1000);
+  return kstDate.toISOString().replace("Z", "+09:00"); // ISO 형식으로 변환
+}
+function formatNumberWithCommas(number) {
+  // 음수 처리
+  const isNegative = number < 0;
+  let absoluteNumber = Math.abs(number).toString(); // 절대값으로 처리
+  let [integer, decimal] = absoluteNumber.split("."); // 정수부와 소수부 분리
+
+  let formatted = "";
+  while (integer.length > 3) {
+    formatted = "," + integer.slice(-3) + formatted;
+    integer = integer.slice(0, -3);
+  }
+  formatted = integer + formatted; // 남은 정수 붙이기
+
+  // 음수 부호를 다시 추가
+  return (
+    (isNegative ? "-" : "") + (decimal ? `${formatted}.${decimal}` : formatted)
+  );
+}

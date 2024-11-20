@@ -139,6 +139,20 @@
       "isAnswered": "답변 완료",
       "answerTitle": "g",
       "answerContent": "g"
+    },
+    {
+      "index": 11,
+      "id": "test3",
+      "name": "김일성",
+      "transactionType": "question",
+      "amount": "",
+      "bank": "",
+      "accountHolder": "",
+      "accountNumber": "",
+      "timestamp": "2024-11-19T03:26:34.746+09:00",
+      "isAnswered": "답변 완료",
+      "answerTitle": "똥먹고",
+      "answerContent": "죽으라!"
     }
   ]
 }

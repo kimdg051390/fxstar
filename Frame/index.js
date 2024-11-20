@@ -65,7 +65,13 @@ document
       password: document.getElementById("signup-password").value,
       name: document.getElementById("signup-name").value,
       phone: document.getElementById("signup-phone").value,
-      account: document.getElementById("signup-account").value,
+      account:
+        document.getElementById("signup-account").value +
+        "(" +
+        document.getElementById("signup-bank").value +
+        "/" +
+        document.getElementById("signup-owner").value +
+        ")",
       residentNumber: document.getElementById("signup-resident-number").value,
       partner: document.getElementById("signup-recommendation").value,
     };

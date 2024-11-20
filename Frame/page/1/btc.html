@@ -6,7 +6,7 @@
     <title>FX-STAR</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="2.css" />
-    <link rel="stylesheet" href="5.css" />
+
     <link rel="stylesheet" href="game.css" />
     <link rel="stylesheet" href="login.css" />
     <link rel="stylesheet" href="../../server.css" />
@@ -101,7 +101,15 @@
 
         <form id="tradeForm">
           <div class="form-group">
-            <label for="entryPrice">잔고: <span id="mymoney"></span>원</label>
+            <label
+              for="entryPrice"
+              style="
+                border: 2px solid lightgray;
+                border-radius: 5px;
+                padding: 5px;
+              "
+              >보유 금액: <span id="mymoney"></span>원</label
+            >
             <label for="entryPrice">투자 금액</label>
             <input
               type="number"

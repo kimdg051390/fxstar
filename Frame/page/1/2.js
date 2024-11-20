@@ -162,7 +162,7 @@ function populateTable(transactions) {
           ? "출금"
           : "계좌문의"
       }</td>
-      <td>${transaction.amount}</td>
+      <td>${formatNumberWithCommas(transaction.amount)}</td>
       <td>${
         transaction.isAnswered === null
           ? "답변 대기"
@@ -194,4 +194,23 @@ function showAnswer(element) {
 function closeAnswerPopup() {
   const popup = document.getElementById("answer-popup");
   popup.style.display = "none";
+}
+
+function formatNumberWithCommas(number) {
+  // 음수 처리
+  const isNegative = number < 0;
+  let absoluteNumber = Math.abs(number).toString(); // 절대값으로 처리
+  let [integer, decimal] = absoluteNumber.split("."); // 정수부와 소수부 분리
+
+  let formatted = "";
+  while (integer.length > 3) {
+    formatted = "," + integer.slice(-3) + formatted;
+    integer = integer.slice(0, -3);
+  }
+  formatted = integer + formatted; // 남은 정수 붙이기
+
+  // 음수 부호를 다시 추가
+  return (
+    (isNegative ? "-" : "") + (decimal ? `${formatted}.${decimal}` : formatted)
+  );
 }

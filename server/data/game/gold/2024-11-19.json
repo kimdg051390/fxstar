@@ -1,0 +1,37 @@
+[
+  {
+    "time": "244회차",
+    "id": "test3",
+    "name": "김일성",
+    "game": "GOLD",
+    "tradeType": "매도",
+    "entryPrice": 8000000,
+    "currentPrice": 2614.9,
+    "result": null,
+    "timestamp": "2024-11-19T04:03:22.549+09:00"
+  },
+  {
+    "time": "257회차",
+    "id": "test",
+    "name": "김정은",
+    "game": "GOLD",
+    "tradeType": "매도",
+    "entryPrice": 3000000,
+    "currentPrice": 2615.65,
+    "result": "win",
+    "timestamp": "2024-11-19T04:16:06.190+09:00",
+    "resultPrice": 2615.25
+  },
+  {
+    "time": "259회차",
+    "id": "test",
+    "name": "김정은",
+    "game": "GOLD",
+    "tradeType": "매수",
+    "entryPrice": 700000,
+    "currentPrice": 2615.65,
+    "result": "lose",
+    "timestamp": "2024-11-19T04:18:10.316+09:00",
+    "resultPrice": 2615.2
+  }
+]

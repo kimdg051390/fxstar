@@ -232,3 +232,8 @@
 .popup-content::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
+
+#signup-docs {
+  width: 100%;
+  height: 150px;
+}

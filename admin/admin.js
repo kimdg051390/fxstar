@@ -31,6 +31,7 @@ function showSection(sectionId) {
   if (sectionId === "ranking-management") loadRanks();
   if (sectionId === "account-management") loadAccounts();
   if (sectionId === "game-management") loadGameData("btc");
+  if (sectionId === "usergame-management") fetchTrades();
 }
 
 // 사용자 데이터 로드
@@ -487,6 +488,10 @@ document
   .getElementById("filter-search-btn")
   .addEventListener("click", filterAndRenderTable);
 
+// 검색 버튼 클릭 이벤트 등록
+document
+  .getElementById("usergame-filter-search-btn")
+  .addEventListener("click", usergamefilterAndRenderTable);
 // API 호출로 데이터를 로드하는 함수
 async function loadGameData(type) {
   try {
@@ -532,4 +537,115 @@ function renderGameTable(data) {
     `;
     tbody.appendChild(tr);
   });
+}
+
+// 서버에서 데이터를 가져온 후 테이블에 필터 적용 및 렌더링
+let globalUserGameData = []; // 데이터를 전역적으로 저장
+async function fetchTrades(type = "btc", startDate, endDate) {
+  try {
+    // 오늘 날짜 기본값
+    const today = getKoreanISOString().split("T")[0];
+    const start = startDate || today;
+    const end = endDate || today;
+
+    const response = await fetch(
+      `/api/alltrades?startDate=${start}&endDate=${end}&type=${type}`
+    );
+    if (!response.ok) {
+      throw new Error("데이터를 가져오는데 실패했습니다.");
+    }
+
+    const trades = await response.json();
+    globalUserGameData = trades;
+    renderUserGameTable(trades);
+  } catch (error) {
+    console.error("거래 내역을 가져오는 중 오류 발생:", error);
+  }
+}
+
+function renderUserGameTable(trades) {
+  const tbody = document.querySelector("#usergame-table tbody");
+  tbody.innerHTML = ""; // 기존 데이터 제거
+
+  trades.forEach((trade) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${trade.name}</td>
+        <td>${trade.time || "-"}</td>
+        <td>${trade.game || "-"}</td>
+        <td>${
+          trade.tradeType == "매수"
+            ? formatNumberWithCommas(trade.entryPrice)
+            : "-"
+        }</td>
+        <td>${
+          trade.tradeType == "매수"
+            ? "-"
+            : formatNumberWithCommas(trade.entryPrice)
+        }</td>
+        <td>${formatNumberWithCommas(trade.entryPrice) || "-"}</td>
+        <td>${formatNumberWithCommas(trade.profit)}</td>
+        <td style="color: ${
+          trade.profit > 0 ? "green" : "red"
+        }; font-weight: bold;">
+          ${trade.profit > 0 ? "당첨" : "낙첨"}
+        </td>
+      `;
+    tbody.appendChild(row);
+  });
+}
+
+function getKoreanISOString() {
+  const now = new Date();
+  const kstOffset = 9 * 60; // 한국은 UTC+9 (분 단위)
+  const kstDate = new Date(now.getTime() + kstOffset * 60 * 1000);
+  return kstDate.toISOString().replace("Z", "+09:00"); // ISO 형식으로 변환
+}
+
+function formatNumberWithCommas(number) {
+  // 음수 처리
+  const isNegative = number < 0;
+  let absoluteNumber = Math.abs(number).toString(); // 절대값으로 처리
+  let [integer, decimal] = absoluteNumber.split("."); // 정수부와 소수부 분리
+
+  let formatted = "";
+  while (integer.length > 3) {
+    formatted = "," + integer.slice(-3) + formatted;
+    integer = integer.slice(0, -3);
+  }
+  formatted = integer + formatted; // 남은 정수 붙이기
+
+  // 음수 부호를 다시 추가
+  return (
+    (isNegative ? "-" : "") + (decimal ? `${formatted}.${decimal}` : formatted)
+  );
+}
+// 필터링된 데이터로 테이블 업데이트
+function usergamefilterAndRenderTable() {
+  const typeFilters = Array.from(
+    document.querySelectorAll(".transaction-type-filter:checked")
+  ).map((checkbox) => checkbox.value);
+
+  const statusFilters = Array.from(
+    document.querySelectorAll(".status-filter:checked")
+  ).map((checkbox) => checkbox.value);
+
+  const nameFilter = document
+    .getElementById("usergame-name-search")
+    .value.toLowerCase();
+  const timeRange = document.getElementById("usergame-time-range-filter").value;
+
+  // 필터링 로직
+  const filteredData = globalUserGameData.filter((record) => {
+    const matchesType =
+      typeFilters.length === 0 || typeFilters.includes(record.transactionType);
+    const matchesStatus =
+      statusFilters.length === 0 || statusFilters.includes(record.status);
+    const matchesName =
+      nameFilter === "" || record.name.toLowerCase().includes(nameFilter);
+
+    return matchesType && matchesStatus && matchesName;
+  });
+
+  renderUserGameTable(filteredData); // 필터링된 데이터를 테이블에 렌더링
 }

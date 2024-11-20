@@ -98,7 +98,7 @@ async function logout() {
     });
 
     if (response.ok) {
-      alert("로그아웃 성공!");
+      showAlert("로그아웃 성공!");
       const loginButton = document.getElementById("login-button");
       loginButton.textContent = "로그인";
       loginButton.setAttribute("onclick", "showPopup('login-popup')"); // 다시 로그인 팝업 열기로 변경

@@ -55,7 +55,7 @@
       <h2>회원정보</h2>
       <div></div>
       <!-- Notice List Table -->
-      <table class="notice-table">
+      <table class="notice-table" style="margin-top: 0">
         <thead>
           <tr>
             <th>잔고</th>
@@ -76,39 +76,46 @@
 
       <div id="custom-time-inputs">
         <!-- 종목 선택 -->
-        <label>종목:</label>
-        <select id="type-select">
-          <option value="btc">BTC</option>
-          <option value="naq">NAQ</option>
-          <option value="gold">GOLD</option>
-        </select>
-        <label>시작:</label>
-        <input type="date" id="start-date" />
-        <label>종료:</label>
-        <input type="date" id="end-date" />
-        <button id="filter-button">조회</button>
+        <div class="horizontal-form">
+          <div class="form-group">
+            <label for="type-select">종목:</label>
+            <select id="type-select">
+              <option value="btc">BTC/USDT</option>
+              <option value="naq">NASDAQ</option>
+              <option value="gold">GOLD</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="start-date">시작:</label>
+            <input type="date" id="start-date" />
+          </div>
+          <div class="form-group">
+            <label for="end-date">종료:</label>
+            <input type="date" id="end-date" />
+          </div>
+        </div>
+        <div>
+          <button id="filter-button" style="height: 35px">조회</button>
+        </div>
       </div>
-
       <!-- Notice List Table -->
-      <table id="trade-table" class="notice-table">
-        <thead>
-          <tr>
-            <th>회차</th>
-            <th>종목</th>
-            <th>매수량</th>
-            <th>매도량</th>
-            <th>거래금</th>
-            <th>수익금액</th>
-            <th>수수료</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- 더 많은 게시글 추가 가능 -->
-        </tbody>
-      </table>
-      <div class="pagination">
-        <button class="prev-button">이전으로</button>
-        <button class="next-button">다음으로</button>
+      <div class="table-container">
+        <table id="trade-table" class="notice-table" style="margin-top: 0">
+          <thead>
+            <tr>
+              <th>회차</th>
+              <th>종목</th>
+              <th>매수</th>
+              <th>매도</th>
+              <th>거래금</th>
+              <th>수익금액</th>
+              <th>결과</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 데이터가 많아질 경우 스크롤 -->
+          </tbody>
+        </table>
       </div>
     </div>
 

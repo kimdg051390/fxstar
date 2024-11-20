@@ -169,7 +169,7 @@ async function loadBTCData() {
     btcData.reverse(); // 데이터 역순 정렬
     btcData.shift(); // 첫 번째 데이터 제거
     for (const entry of btcData) {
-      if (entry.time === "1440회") break; // "1회"가 나오면 반복 종료
+      //if (entry.time === "1440회") break; // "1회"가 나오면 반복 종료
 
       const tr = document.createElement("tr");
       tr.innerHTML = `
@@ -364,7 +364,6 @@ async function resultTrade(resultPrice, time) {
     }
 
     const result = await response.json();
-    console.log("저장된 데이터:", result.updatedTrade);
 
     entry = result.updatedTrade.entryPrice;
     winlose = result.updatedTrade.result;
@@ -386,6 +385,9 @@ async function resultTrade(resultPrice, time) {
       : moneyWithoutCommas,
     10
   );
+  winlose == "win"
+    ? showAlert("축하합니다!", "+" + formatNumberWithCommas(amount) + "원 당첨")
+    : showAlert("다음기회에...", "낙첨😭");
 
   try {
     const response = await fetch("/api/user-info/balance", {
@@ -443,12 +445,42 @@ async function loadUserInfo() {
 loadUserInfo();
 
 function formatNumberWithCommas(number) {
-  let [integer, decimal] = number.toString().split("."); // 정수부와 소수부 분리
+  // 음수 처리
+  const isNegative = number < 0;
+  let absoluteNumber = Math.abs(number).toString(); // 절대값으로 처리
+  let [integer, decimal] = absoluteNumber.split("."); // 정수부와 소수부 분리
+
   let formatted = "";
   while (integer.length > 3) {
     formatted = "," + integer.slice(-3) + formatted;
     integer = integer.slice(0, -3);
   }
   formatted = integer + formatted; // 남은 정수 붙이기
-  return decimal ? `${formatted}.${decimal}` : formatted; // 소수부 붙이기
+
+  // 음수 부호를 다시 추가
+  return (
+    (isNegative ? "-" : "") + (decimal ? `${formatted}.${decimal}` : formatted)
+  );
+}
+
+function showAlert(title, message) {
+  const alertBackground = document.getElementById("alert-background");
+  const alertPopup = document.getElementById("alert-popup");
+
+  // 제목과 메시지 설정
+  document.getElementById("alert-title").textContent = title;
+  document.getElementById("alert-message").textContent = message;
+
+  // 팝업과 배경 보이기
+  alertBackground.style.display = "block";
+  alertPopup.style.display = "block";
+}
+
+function closeAlert() {
+  const alertBackground = document.getElementById("alert-background");
+  const alertPopup = document.getElementById("alert-popup");
+
+  // 팝업과 배경 숨기기
+  alertBackground.style.display = "none";
+  alertPopup.style.display = "none";
 }
